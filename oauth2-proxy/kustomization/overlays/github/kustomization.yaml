@@ -3,8 +3,10 @@ labels:
   - pairs:
       usage: rubber-duck
   - pairs:
-      app: nginx-app
+      app: oauth2-proxy-app
     includeSelectors: true
 
 resources:
   - ../../base
+  - credentials.yaml
+  - deployment.yaml
