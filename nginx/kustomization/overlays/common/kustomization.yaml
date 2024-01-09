@@ -1,0 +1,8 @@
+namePrefix: nginx-
+namespace: rubber-duck
+labels:
+  - pairs:
+      usage: rubber-duck
+
+resources:
+  - ../../base

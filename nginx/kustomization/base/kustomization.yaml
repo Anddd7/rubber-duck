@@ -1,0 +1,9 @@
+labels:
+  - pairs:
+      app: nginx-app
+    includeSelectors: true
+
+resources:
+  - ../../../kustomization/base
+  - deployment.yaml
+  - svc.yaml
