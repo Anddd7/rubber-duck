@@ -1,0 +1,52 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.allow-http: 'false'
+    nginx.ingress.kubernetes.io/auth-response-headers: 'Authorization'
+    nginx.ingress.kubernetes.io/auth-signin: https://$host/oauth2/start?rd=$escaped_request_uri
+    nginx.ingress.kubernetes.io/auth-url: https://$host/oauth2/auth
+    nginx.ingress.kubernetes.io/force-ssl-redirect: 'true'
+    cert-manager.io/cluster-issuer: letsencrypt
+  name: httpbin
+spec:
+  rules:
+    - host: httpbin.example.com
+      http:
+        paths:
+          - backend:
+              service:
+                name: httpbin
+                port:
+                  number: 80
+            path: /
+            pathType: Prefix
+  tls:
+    - hosts:
+        - '*.example.com'
+      secretName: rubber-duck-wild-cert
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.allow-http: 'false'
+    cert-manager.io/cluster-issuer: letsencrypt
+  name: oauth2-proxy
+spec:
+  rules:
+    - host: httpbin.example.com
+      http:
+        paths:
+          - backend:
+              service:
+                name: oauth2-proxy
+                port:
+                  number: 4180
+            path: /oauth2
+            pathType: Prefix
+  tls:
+    - hosts:
+        - '*.example.com'
+      secretName: rubber-duck-wild-cert
