@@ -1,6 +1,3 @@
-
-
 resources:
-  - ../../../kustomization/namespace.yaml
   - deployment.yaml
   - svc.yaml
