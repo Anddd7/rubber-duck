@@ -25,3 +25,8 @@ They, combined with kustomize in different scenarios, can be used to debug diffe
 ├── README.md
 └── LICENSE
 ```
+
+## TODO
+
+- [ ] makefile, utilize the envsubs with kustomize
+- [ ] find a way to reduce the kustomization.yaml (or auto generate)
