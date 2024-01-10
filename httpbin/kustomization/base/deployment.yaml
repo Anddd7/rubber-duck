@@ -6,11 +6,11 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: httpbin
+      app: httpbin-app
   template:
     metadata:
       labels:
-        app: httpbin
+        app: httpbin-app
     spec:
       containers:
         - image: kennethreitz/httpbin
