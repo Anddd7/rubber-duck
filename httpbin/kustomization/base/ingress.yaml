@@ -4,13 +4,13 @@ metadata:
   name: httpbin
 spec:
   rules:
-    - host: example.com
-      http:
-        paths:
-          - backend:
-              service:
-                name: httpbin
-                port:
-                  number: 80
-            path: /
-            pathType: Prefix
+  - host: example.com
+    http:
+      paths:
+      - backend:
+          service:
+            name: httpbin
+            port:
+              number: 80
+        path: /
+        pathType: Prefix

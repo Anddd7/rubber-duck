@@ -1,13 +1,14 @@
 namePrefix: oauth-gh-
 namespace: rubber-duck
 labels:
-  - pairs:
-      usage: rubber-duck
-      scenario: oauth-github-demo
+- pairs:
+    scenario: oauth-github-demo
+    usage: rubber-duck
 
 resources:
-  - ../../oauth2-proxy/kustomization/overlays/github
-  - ../../httpbin/kustomization/base
+- ../../oauth2-proxy/kustomization/overlays/github
+- ../../httpbin/kustomization/base
 
-patchesStrategicMerge:
-  - ingress.yaml
+patches:
+- path: httpbin-ingress.yaml
+- path: oauth-ingress.yaml
