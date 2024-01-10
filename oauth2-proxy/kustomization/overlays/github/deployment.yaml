@@ -6,11 +6,11 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: oauth2-proxy
+      app: oauth2-proxy-app
   template:
     metadata:
       labels:
-        app: oauth2-proxy
+        app: oauth2-proxy-app
     spec:
       containers:
         - args:
@@ -38,7 +38,6 @@ spec:
                   name: oauth2-proxy-credentials
                   key: OAUTH2_PROXY_COOKIE_SECRET
           image: quay.io/oauth2-proxy/oauth2-proxy:latest
-          imagePullPolicy: Always
           name: oauth2-proxy
           ports:
             - containerPort: 4180
