@@ -4,7 +4,7 @@ A simple TUI to help you debug your cluster.
 
 ## Features
 
-- [ ] tui entry
+- [x] tui entry
 - [ ] kong & bubbletea
 - [ ] shortcuts, or interactive commands for most common tasks
 - [ ] multiple cluster overview
@@ -13,3 +13,7 @@ A simple TUI to help you debug your cluster.
 - [ ] fast deploy debugging service
 - [ ] custom plugins
 - [ ] prefer settings
+- [ ] decommissiong adcli
+  - cidr separation
+  - git time modify
+  - (blog cmd should move to blog repo)
