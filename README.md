@@ -30,3 +30,11 @@ They, combined with kustomize in different scenarios, can be used to debug diffe
 
 - [ ] makefile, utilize the envsubs with kustomize
 - [ ] find a way to reduce the kustomization.yaml (or auto generate)
+- [ ] tui engine for daily operations
+
+### useful tools
+
+- TUI
+  - charmbracelet / bubbletea
+  - hairyhenderson / gomplate
+  - ~~jedib0t / go-pretty~~
