@@ -1,25 +1,28 @@
 package main
 
-import "github.com/alecthomas/kong"
+import (
+	"os"
+
+	"github.com/alecthomas/kong"
+	"github.com/rs/zerolog"
+	"github.com/rs/zerolog/log"
+)
 
 var CLI struct {
-	Rm struct {
-		Force     bool `help:"Force removal."`
-		Recursive bool `help:"Recursively remove files."`
-
-		Paths []string `arg:"" name:"path" help:"Paths to remove." type:"path"`
-	} `cmd:"" help:"Remove files."`
-
-	Ls struct {
-		Paths []string `arg:"" optional:"" name:"path" help:"Paths to list." type:"path"`
-	} `cmd:"" help:"List paths."`
+	K struct {
+		Commands []string `arg:"" name:"cmd" help:"Commands to execute."`
+	} `cmd:"" help:"wrapper for kubectl"`
 }
 
 func main() {
+	// TODO for development
+	zerolog.SetGlobalLevel(zerolog.TraceLevel)
+	log.Logger = log.Output(zerolog.ConsoleWriter{Out: os.Stdout})
+
 	ctx := kong.Parse(&CLI)
 	switch ctx.Command() {
-	case "rm <path>":
-	case "ls":
+	case "k <cmd>":
+		k()
 	default:
 		panic(ctx.Command())
 	}
