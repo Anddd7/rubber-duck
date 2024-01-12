@@ -8,12 +8,12 @@ A simple TUI to help you debug your cluster.
 - [ ] kong & bubbletea
 - [ ] shortcuts, or interactive commands for most common tasks
 - [ ] multiple cluster overview
-- [ ] k8s utils (logs, top, getxxx)
+- ~~[ ] k8s utils (logs, top, getxxx)~~
+  - use [kw.sh](../kw/README.md) instead
 - [ ] yaml export
 - [ ] fast deploy debugging service
 - [ ] custom plugins
 - [ ] prefer settings
-- [ ] decommissiong adcli
+- [x] decommissiong adcli
   - cidr separation
   - git time modify
-  - (blog cmd should move to blog repo)

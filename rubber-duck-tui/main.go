@@ -1,11 +1,8 @@
 package main
 
 import (
-	"os"
-
 	"github.com/alecthomas/kong"
-	"github.com/rs/zerolog"
-	"github.com/rs/zerolog/log"
+	log "github.com/sirupsen/logrus"
 )
 
 var CLI struct {
@@ -15,9 +12,8 @@ var CLI struct {
 }
 
 func main() {
-	// TODO for development
-	zerolog.SetGlobalLevel(zerolog.TraceLevel)
-	log.Logger = log.Output(zerolog.ConsoleWriter{Out: os.Stdout})
+	// TODO for development logging
+	log.SetLevel(log.TraceLevel)
 
 	ctx := kong.Parse(&CLI)
 	switch ctx.Command() {

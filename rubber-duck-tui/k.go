@@ -4,7 +4,7 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/rs/zerolog/log"
+	log "github.com/sirupsen/logrus"
 )
 
 func k() {
@@ -24,11 +24,11 @@ func k() {
 	commands = append(commands, suffixes...)
 
 	for _, command := range commands {
-		log.Trace().Msg(command)
+		log.Trace(command)
 	}
 
 	command := strings.Join(commands, " ")
-	log.Info().Msg(command)
+	log.Info(command)
 
 	params := struct {
 		FileType string
@@ -39,14 +39,14 @@ func k() {
 	}
 	tmpl, err := template.New("k").Parse(command)
 	if err != nil {
-		panic(err)
+		log.Panic(err)
 	}
 	buf := new(strings.Builder)
 	err = tmpl.Execute(buf, params)
 	if err != nil {
-		panic(err)
+		log.Panic(err)
 	}
 
 	command = buf.String()
-	log.Info().Msg(command)
+	log.Info(command)
 }
