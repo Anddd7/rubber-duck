@@ -1,3 +1,6 @@
+BIN		= ./bin
+NAME	= rbcli
+
 run:
 	go run ./
 
@@ -29,3 +32,10 @@ check: fmt lint cover
 dep:
 	go install mvdan.cc/gofumpt@latest
 	go mod download
+
+install: build
+	mkdir -p ~/bin
+	mv $(BIN)/$(NAME) ~/bin/$(NAME) 
+
+uninstall:
+	rm ~/bin/$(NAME)
