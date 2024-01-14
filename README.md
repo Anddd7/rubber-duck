@@ -26,16 +26,19 @@ They, combined with kustomize in different scenarios, can be used to debug diffe
 └── LICENSE
 ```
 
-## TODO
+## Features
 
-- [ ] makefile, utilize the envsubs with kustomize
-- [ ] find a way to reduce the kustomization.yaml (or auto generate)
+- [ ] find a way to reduce the code of kustomization.yaml (or auto generate)
+  - [ ] makefile, utilize the envsubs with kustomize
+  - ...
 - [x] tui engine for daily operations
+  - see detials in[rubber-duck-cli](./rubber-duck-cli/README.md)
 - [ ] curl as sidecar (kustomize patch)
-- [ ] devcontainers
 - [ ] gitclone as sidecar
+- [ ] devcontainers
+- [ ] composed wiki page (patten of readme)
 
-### useful tools
+### relavant tools
 
 - TUI
   - charmbracelet / bubbletea
