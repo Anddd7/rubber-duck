@@ -1,19 +1,6 @@
 {
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:base"
-  ],
-  "packageRules": [
-    {
-      "matchPaths": [
-        "rubber-duck-cli",
-        "rubber-duck-tui"
-      ],
-      "matchManagers": [
-        "gomod"
-      ],
-      "schedule": [
-        "at any time"
-      ]
-    }
+    "config:recommended"
   ]
 }
