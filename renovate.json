@@ -2,5 +2,21 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended"
+  ],
+  "packageRules": [
+    {
+      "groupName": "rubber-duck-cli",
+      "description": "Dependency group for rubber-duck-cli",
+      "matchFileNames": [
+        "rubber-duck-cli/**"
+      ]
+    },
+    {
+      "groupName": "rubber-duck-tui",
+      "description": "Dependency group for rubber-duck-tui",
+      "matchFileNames": [
+        "rubber-duck-tui/**"
+      ]
+    }
   ]
 }
