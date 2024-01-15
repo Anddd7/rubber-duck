@@ -12,7 +12,7 @@ A simple CLI to help you debug your cluster.
 - [ ] fast deploy debugging service
 - [ ] custom plugins
 - [ ] prefer settings
-- [ ] decommissiong adcli
+- [x] decommissiong adcli
   - cidr separation
   - git time modify
 - [ ] renovate setup
