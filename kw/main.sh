@@ -27,13 +27,12 @@ kw() {
       local filename="${resource_type}_${resource_name}_${timestamp}.yaml"
 
       out_args+=("-o" "yaml")
-      out_args_suffix+=("> $filename")
+      out_args_suffix+=(">" "$filename")
     else
       out_args+=("${args[$i]}")
     fi
   done
 
-  # echo "kw: ${resource_type} ${resource_name}"
   echo "kw: kubectl ${out_args[@]} ${out_args_suffix[@]}"
-  command kubectl "${args[@]}"
+  eval "kubectl ${out_args[*]} ${out_args_suffix[*]}"
 }
