@@ -1,3 +1,15 @@
+# @file kw: kubectl wrapper
+# @brief A simple wrapper for kubectl to make it easier to use.
+# @description quick export yaml file
+
+# @description provide some shortcuts for your frequently used kubectl command, support kubectl_completion (for zsh)
+# 
+# @example
+#   # export resource to a temp yaml file
+#   kw get pod your-pod -oy
+#   > kubectl get pod your-pod -o yaml > pod_your-pod_112422.yaml
+# 
+# @arg $@ kubectl command
 kw() {
   local args=("$@")
   local out_args=()

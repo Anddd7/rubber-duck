@@ -1,10 +1,38 @@
+# @file base64 shortcuts
+# @brief Some shortcuts for base64 encoding and decoding.
+# @description
+#   * en/decode string
+#   * en/decode kubernetes secret file
+
+# @description base64 encode with pipe
+#
+# @example
+#   b64 your-string
+#
+# @arg $1 string A value to encode
+#
+# @stdout encoded string
 b64() { echo -n "$1" | base64 -w 0; }
+
+# @description base64 decode with pipe
+#
+# @example
+#   b64d your-string
+#
+# @arg $1 string A value to dencode
+#
+# @stdout decoded string
 b64d() { echo -n "$1" | base64 -d; }
 
-alias b64k="b64k8s"
-alias b64dk="b64dk8s"
-
-# encrypt k8s secret yaml
+# @description encode the kubernetes secret data
+#
+# @example
+#   b64k input-file output-file
+#   b64k8s input-file output-file
+#
+# @arg
+#   $1 src file
+#   $2 dest file contains encoded data
 b64k8s() {
   local input_file="$1"
   local output_file="$2"
@@ -25,7 +53,15 @@ b64k8s() {
   echo "Secret encrypted and saved to: $output_file"
 }
 
-# decrypt k8s secret yaml
+# @description dencode the kubernetes secret data
+#
+# @example
+#   b64dk input-file output-file
+#   b64dk8s input-file output-file
+#
+# @arg
+#   $1 src file contains encoded data
+#   $2 dest file
 b64dk8s() {
   local input_file="$1"
   local output_file="$2"
@@ -44,3 +80,6 @@ b64dk8s() {
 
   echo "Secret decrypted and saved to: $output_file"
 }
+
+alias b64k="b64k8s"
+alias b64dk="b64dk8s"
