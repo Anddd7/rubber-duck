@@ -47,15 +47,3 @@ They, combined with kustomize in different scenarios, can be used to debug diffe
   
 ## Usages
 
-- [kw: kubectl wrapper](./kw/README.md):
-A simple wrapper for kubectl to make it easier to use.
-- [Rubber Duck TUI](./rubber-duck-tui/README.md):
-A reuseable TUI component for rubber duck.
-- [zsh tools](./zsh/README.md):
-Misc tools for zsh
-- [Rubber Duck CLI](./rubber-duck-cli/README.md):
-A simple CLI to help you debug your cluster.
-- [tempfile](./tmpnb/README.md):
-Create temp notebook(folder) and file
-- [base64 shortcuts](./b64/README.md):
-Some shortcuts for base64 encoding and decoding.
