@@ -22,7 +22,7 @@ kw() {
   done
 
   for ((i = 1; i <= $#; i++)); do
-    if [[ ${args[$i]} == "-oo" ]]; then
+    if [[ ${args[$i]} == "-oy" ]]; then
       local timestamp=$(date +%H%M%S)
       local filename="${resource_type}_${resource_name}_${timestamp}.yaml"
 
@@ -36,3 +36,5 @@ kw() {
   echo "kw: kubectl ${out_args[@]} ${out_args_suffix[@]}"
   eval "kubectl ${out_args[*]} ${out_args_suffix[*]}"
 }
+
+compdef _kubectl kw
