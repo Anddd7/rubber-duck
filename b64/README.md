@@ -2,9 +2,73 @@
 
 Some shortcuts for base64 encoding and decoding.
 
-## Usage
+## Overview
 
-- `b64 xxx` -> `echo xxx | base64`, reverse the pipe for base64 encode
-- `b64d xxx` -> `echo xxx | base64 -d`, reverse the pipe for base64 decode
-- `b64k`,`b64k8s`, encode the kubernetes secret data
-- `b64dk`,`b64dk8s`, decode the kubernetes secret data
+* en/decode string
+* en/decode kubernetes secret file
+
+## Index
+
+* [b64](#b64)
+* [b64d](#b64d)
+* [b64k8s](#b64k8s)
+* [b64dk8s](#b64dk8s)
+
+### b64
+
+base64 encode with pipe
+
+#### Example
+
+```bash
+b64 your-string
+```
+
+#### Arguments
+
+* **$1** (string): A value to encode
+
+#### Output on stdout
+
+* encoded string
+
+### b64d
+
+base64 decode with pipe
+
+#### Example
+
+```bash
+b64d your-string
+```
+
+#### Arguments
+
+* **$1** (string): A value to dencode
+
+#### Output on stdout
+
+* decoded string
+
+### b64k8s
+
+encode the kubernetes secret data
+
+#### Example
+
+```bash
+b64k input-file output-file
+b64k8s input-file output-file
+```
+
+### b64dk8s
+
+dencode the kubernetes secret data
+
+#### Example
+
+```bash
+b64dk input-file output-file
+b64dk8s input-file output-file
+```
+

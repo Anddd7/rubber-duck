@@ -1,2 +1,2 @@
 doc:
-	shdoc < main.sh > README.md
+	@shdoc < main.sh > README.md
