@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: excalidraw-room
+  name: excalidraw-room
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: excalidraw-room
+  template:
+    metadata:
+      labels:
+        app: excalidraw-room
+    spec:
+      containers:
+      - image: excalidraw/excalidraw-room:sha-49bf529
+        name: room
+        env:
+        - name: PORT
+          value: "8082"
+        ports:
+        - containerPort: 8082
+          name: http
+          protocol: TCP

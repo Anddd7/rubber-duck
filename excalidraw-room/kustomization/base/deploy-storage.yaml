@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: excalidraw-storage
+  name: excalidraw-storage
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: excalidraw-storage
+  template:
+    metadata:
+      labels:
+        app: excalidraw-storage
+    spec:
+      containers:
+      - image: alswl/excalidraw-storage-backend:v2023.11.11
+        name: storage
+        env:
+        - name: PORT
+          value: "8081"
+        ports:
+        - containerPort: 8081
+          name: http
+          protocol: TCP

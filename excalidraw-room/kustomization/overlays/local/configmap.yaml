@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: excalidraw-config
+data:
+  # use port-forward to export it in local
+  VITE_APP_BACKEND_V2_GET_URL: https://example.com/api/v2/
+  VITE_APP_BACKEND_V2_POST_URL: https://example.com/api/v2/post/
+  VITE_APP_WS_SERVER_URL: http://127.0.0.1:8082
+  VITE_APP_HTTP_STORAGE_BACKEND_URL: http://127.0.0.1:8081/api/v2
+  VITE_APP_STORAGE_BACKEND: http

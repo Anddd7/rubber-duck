@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: excalidraw-frontend
+  name: excalidraw-frontend
+spec:
+  selector:
+    matchLabels:
+      app: excalidraw-frontend
+  template:
+    metadata:
+      labels:
+        app: excalidraw-frontend
+    spec:
+      containers:
+      - image: alswl/excalidraw:v0.17.0-fork-b2
+        name: frontend
+        env:
+        - name: VITE_APP_BACKEND_V2_GET_URL
+          valueFrom:
+            configMapKeyRef:
+              name: excalidraw-config
+              key: VITE_APP_BACKEND_V2_GET_URL
+        - name: VITE_APP_BACKEND_V2_POST_URL
+          valueFrom:
+            configMapKeyRef:
+              name: excalidraw-config
+              key: VITE_APP_BACKEND_V2_POST_URL
+        - name: VITE_APP_WS_SERVER_URL
+          valueFrom:
+            configMapKeyRef:
+              name: excalidraw-config
+              key: VITE_APP_WS_SERVER_URL
+        - name: VITE_APP_HTTP_STORAGE_BACKEND_URL
+          valueFrom:
+            configMapKeyRef:
+              name: excalidraw-config
+              key: VITE_APP_HTTP_STORAGE_BACKEND_URL
+        - name: VITE_APP_STORAGE_BACKEND
+          valueFrom:
+            configMapKeyRef:
+              name: excalidraw-config
+              key: VITE_APP_STORAGE_BACKEND
+        ports:
+        - containerPort: 80
+          name: http
+          protocol: TCP
