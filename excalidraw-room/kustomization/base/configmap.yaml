@@ -5,6 +5,7 @@ metadata:
 data:
   VITE_APP_BACKEND_V2_GET_URL: https://example.com/api/v2/
   VITE_APP_BACKEND_V2_POST_URL: https://example.com/api/v2/post/
-  VITE_APP_WS_SERVER_URL: http://example.com/room
-  VITE_APP_HTTP_STORAGE_BACKEND_URL: http://example.com/stoarge/api/v2
+  # unknown issue: those 2 urls are not support sub-path
+  VITE_APP_WS_SERVER_URL: http://room.example.com
+  VITE_APP_HTTP_STORAGE_BACKEND_URL: http://storaage.example.com/api/v2
   VITE_APP_STORAGE_BACKEND: http

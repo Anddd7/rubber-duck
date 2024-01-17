@@ -3,7 +3,9 @@ resources:
 - deploy-frontend.yaml
 - deploy-storage.yaml
 - deploy-room.yaml
-- ingress.yaml
+- ingress-frontend.yaml
+- ingress-storage.yaml
+- ingress-room.yaml
 - svc-frontend.yaml
 - svc-storage.yaml
 - svc-room.yaml

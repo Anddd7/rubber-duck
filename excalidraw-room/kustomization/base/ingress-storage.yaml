@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.allow-http: 'false'
+  name: excalidraw-storage
+spec:
+  rules:
+  - host: storage.excalidraw.example.com
+    http:
+      paths:
+      - backend:
+          service:
+            name: excalidraw-storage
+            port:
+              number: 8081
+        path: /
+        pathType: Prefix
