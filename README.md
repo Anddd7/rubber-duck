@@ -53,6 +53,8 @@ A simple wrapper for kubectl to make it easier to use.
 A reuseable TUI component for rubber duck.
 - [zsh tools](./zsh/README.md):
 Misc tools for zsh
+- [excalidraw collabration](./excalidraw-room/README.md):
+Deploy the excalidraw with sefl-hosted collabration(room) in your cluster.
 - [Rubber Duck CLI](./rubber-duck-cli/README.md):
 A simple CLI to help you debug your cluster.
 - [tempfile](./tmpnb/README.md):
