@@ -12,3 +12,5 @@ Solution:
 - Code: <https://github.com/alswl/excalidraw-collaboration>
   - forked excalidraw: <https://github.com/alswl/excalidraw>
   - forked storage backend: <https://github.com/alswl/excalidraw-storage-backend>
+
+## TODO: move to forked excalidraw, replace with self build image
