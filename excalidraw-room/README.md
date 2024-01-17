@@ -1,10 +1,12 @@
 # excalidraw collabration
 
-Deploy the excalidraw with sefl-hosted collabration(room) in your cluster.
+Deploy excalidraw(https://github.com/excalidraw/excalidraw) to your cluster as communication tool.
 
-## Solution
+## Others
 
-Issue: <https://github.com/excalidraw/excalidraw/discussions/3879>
+The realtime collaboration feature is comming from community:
+
+- Issue: <https://github.com/excalidraw/excalidraw/discussions/3879>
 
 Solution:
 
@@ -14,3 +16,5 @@ Solution:
   - forked storage backend: <https://github.com/alswl/excalidraw-storage-backend>
 
 ## TODO: move to forked excalidraw, replace with self build image
+
+to keep the source same, should build the image from code

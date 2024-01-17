@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: poker-planning-server
+  name: poker-planning-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: poker-planning-server
+  template:
+    metadata:
+      labels:
+        app: poker-planning-server
+    spec:
+      containers:
+      - image: anddd9527/poker-planning-server:v1.0.0
+        name: server
+        env:
+        - name: APP_APPLICATION__BASE_URL
+          valueFrom:
+            configMapKeyRef:
+              name: poker-planning-config
+              key: APP_APPLICATION__BASE_URL
+        ports:
+        - containerPort: 8000
+          name: http
+          protocol: TCP

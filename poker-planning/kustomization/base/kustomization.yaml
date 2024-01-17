@@ -1,0 +1,8 @@
+resources:
+- configmap.yaml
+- deploy-frontend.yaml
+- deploy-server.yaml
+- ingress-frontend.yaml
+- ingress-server.yaml
+- svc-frontend.yaml
+- svc-server.yaml

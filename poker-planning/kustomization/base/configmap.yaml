@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: poker-planning-config
+data:
+  APP_APPLICATION__BASE_URL: https://example.com
+  VITE_GRAPHQL_ENDPOINT: https://api.example.com
+  VITE_GRAPHQL_WS_ENDPOINT: ws://api.example.com

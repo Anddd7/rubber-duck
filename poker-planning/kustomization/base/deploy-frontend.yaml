@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: poker-planning-frontend
+  name: poker-planning-frontend
+spec:
+  selector:
+    matchLabels:
+      app: poker-planning-frontend
+  template:
+    metadata:
+      labels:
+        app: poker-planning-frontend
+    spec:
+      containers:
+      - image: anddd9527/poker-planning:v1.0.0
+        name: frontend
+        env:
+        - name: VITE_GRAPHQL_ENDPOINT
+          valueFrom:
+            configMapKeyRef:
+              name: poker-planning-config
+              key: VITE_GRAPHQL_ENDPOINT
+        - name: VITE_GRAPHQL_WS_ENDPOINT
+          valueFrom:
+            configMapKeyRef:
+              name: poker-planning-config
+              key: VITE_GRAPHQL_WS_ENDPOINT
+        ports:
+        - containerPort: 80
+          name: http
+          protocol: TCP
