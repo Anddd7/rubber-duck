@@ -3,16 +3,19 @@ kind: Ingress
 metadata:
   annotations:
     kubernetes.io/ingress.allow-http: 'false'
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+    nginx.ingress.kubernetes.io/rewrite-target: /
   name: poker-planning-server
 spec:
   rules:
-  - host: api.example.com
+  - host: example.com
     http:
       paths:
       - backend:
           service:
             name: poker-planning-server
             port:
-              number: 80
-        path: /
+              number: 8000
+        path: /api
         pathType: Prefix
