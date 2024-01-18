@@ -15,7 +15,7 @@ spec:
         app: excalidraw-storage
     spec:
       containers:
-      - image: alswl/excalidraw-storage-backend:v2023.11.11
+      - image: docker.io/alswl/excalidraw-storage-backend:v2023.11.11
         name: storage
         env:
         - name: PORT

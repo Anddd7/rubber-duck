@@ -14,7 +14,7 @@ spec:
         app: poker-planning-frontend
     spec:
       containers:
-      - image: anddd9527/poker-planning:v1.0.1
+      - image: docker.io/anddd9527/poker-planning:v1.0.1
         name: frontend
         env:
         - name: GRAPHQL_ENDPOINT

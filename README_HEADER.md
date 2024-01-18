@@ -37,6 +37,7 @@ They, combined with kustomize in different scenarios, can be used to debug diffe
 - [ ] gitclone as sidecar
 - [ ] devcontainers
 - [x] composed wiki page (patten of readme)
+- [ ] prod ready: add probe, image pull policy, resource limits ...
 
 ### relavant tools
 

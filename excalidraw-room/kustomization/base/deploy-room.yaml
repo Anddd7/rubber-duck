@@ -15,7 +15,7 @@ spec:
         app: excalidraw-room
     spec:
       containers:
-      - image: excalidraw/excalidraw-room:sha-49bf529
+      - image: docker.io/excalidraw/excalidraw-room:sha-49bf529
         name: room
         env:
         - name: PORT

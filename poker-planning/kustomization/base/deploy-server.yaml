@@ -15,7 +15,7 @@ spec:
         app: poker-planning-server
     spec:
       containers:
-      - image: anddd9527/poker-planning-server:v1.0.0
+      - image: docker.io/anddd9527/poker-planning-server:v1.0.0
         name: server
         env:
         - name: APP_APPLICATION__BASE_URL

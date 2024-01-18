@@ -14,7 +14,7 @@ spec:
         app: excalidraw-frontend
     spec:
       containers:
-      - image: alswl/excalidraw:v0.17.0-fork-b2
+      - image: docker.io/alswl/excalidraw:v0.17.0-fork-b2
         name: frontend
         env:
         - name: VITE_APP_BACKEND_V2_GET_URL
