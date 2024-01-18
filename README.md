@@ -37,6 +37,7 @@ They, combined with kustomize in different scenarios, can be used to debug diffe
 - [ ] gitclone as sidecar
 - [ ] devcontainers
 - [x] composed wiki page (patten of readme)
+- [ ] prod ready: add probe, image pull policy, resource limits ...
 
 ### relavant tools
 
@@ -49,12 +50,14 @@ They, combined with kustomize in different scenarios, can be used to debug diffe
 
 - [kw: kubectl wrapper](./kw/README.md):
 A simple wrapper for kubectl to make it easier to use.
+- [poker-planning](./poker-planning/README.md):
+Deploy poker-planning (<https://github.com/ModPhoenix/poker-planning>) to your cluster as communication tool.
 - [Rubber Duck TUI](./rubber-duck-tui/README.md):
 A reuseable TUI component for rubber duck.
 - [zsh tools](./zsh/README.md):
 Misc tools for zsh
-- [excalidraw collabration](./excalidraw-room/README.md):
-Deploy the excalidraw with sefl-hosted collabration(room) in your cluster.
+- [excalidraw collabration](./excalidraw/README.md):
+Deploy excalidraw(https://github.com/excalidraw/excalidraw) to your cluster as communication tool.
 - [Rubber Duck CLI](./rubber-duck-cli/README.md):
 A simple CLI to help you debug your cluster.
 - [tempfile](./tmpnb/README.md):
