@@ -11,7 +11,7 @@ metadata:
   name: httpbin
 spec:
   rules:
-  - host: httpbin.example.com
+  - host: example.com
     http:
       paths:
       - backend:
@@ -23,5 +23,5 @@ spec:
         pathType: Prefix
   tls:
   - hosts:
-    - '*.example.com'
+    - *.example.com
     secretName: rubber-duck-wild-cert
