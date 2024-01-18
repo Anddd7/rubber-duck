@@ -28,13 +28,11 @@ They, combined with kustomize in different scenarios, can be used to debug diffe
 
 ## Features
 
-- [ ] find a way to reduce the code of kustomization.yaml (or auto generate)
-  - [ ] makefile, utilize the envsubs with kustomize
-  - ...
+- [ ] makefile, utilize the envsubs with kustomize
 - [x] tui engine for daily operations
   - see detials in[rubber-duck-cli](./rubber-duck-cli/README.md)
-- [ ] curl as sidecar (kustomize patch)
-- [ ] gitclone as sidecar
+- [x] curl as sidecar (kustomize patch)
+- [x] ~~gitclone as sidecar~~ ❗credential may expose
 - [ ] devcontainers
 - [x] composed wiki page (patten of readme)
 - [ ] prod ready: add probe, image pull policy, resource limits ...

@@ -1,0 +1,8 @@
+- op: add
+  path: "/spec/template/spec/containers/-"
+  value:
+    name: sidecar-curl
+    image: curlimages/curl:8.5.0
+    args:
+    - sleep
+    - "3600"
