@@ -1,4 +1,7 @@
+commonAnnotations:
+  rubber-duck/component: nginx
+  rubber-duck/managed-by: kustomize/kustomization/base
+
 resources:
 - deployment.yaml
 - svc.yaml
-- ingress.yaml
