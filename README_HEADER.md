@@ -28,13 +28,14 @@ They, combined with kustomize in different scenarios, can be used to debug diffe
 
 ## Features
 
-- [ ] find a way to reduce the code of kustomization.yaml (or auto generate)
-  - [ ] makefile, utilize the envsubs with kustomize
-  - ...
+- [x] ~~find a way to reduce the code of kustomization.yaml (or auto generate)~~
+- [x] ~~makefile, utilize the envsubs with kustomize~~
+  - keep it simple stupid, declaritive first
 - [x] tui engine for daily operations
   - see detials in[rubber-duck-cli](./rubber-duck-cli/README.md)
-- [ ] curl as sidecar (kustomize patch)
-- [ ] gitclone as sidecar
+- [x] curl as sidecar (kustomize patch)
+- [x] ~~gitclone as sidecar~~ 
+  - ❗not safe
 - [ ] devcontainers
 - [x] composed wiki page (patten of readme)
 - [ ] prod ready: add probe, image pull policy, resource limits ...
@@ -45,6 +46,10 @@ They, combined with kustomize in different scenarios, can be used to debug diffe
   - charmbracelet / bubbletea
   - hairyhenderson / gomplate
   - ~~jedib0t / go-pretty~~
+- K8S
+  - kustomize
+- shell
+  - shdoc
   
 ## Usages
 
