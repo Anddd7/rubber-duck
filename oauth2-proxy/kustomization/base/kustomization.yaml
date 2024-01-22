@@ -1,3 +1,8 @@
+commonAnnotations:
+  rubber-duck/component: oauth2-proxy/kustomization/base
+  rubber-duck/managed-by: oauth2-proxy
+  
 resources:
-  - svc.yaml
-  - ingress.yaml
+- svc.yaml
+- deployment.yaml
+- secret.yaml

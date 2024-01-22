@@ -1,4 +1,0 @@
-resources:
-  - ../../base
-  - credentials.yaml
-  - deployment.yaml
