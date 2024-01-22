@@ -1,6 +1,6 @@
 commonAnnotations:
   rubber-duck/component: nginx
-  rubber-duck/managed-by: kustomize/kustomization/ingress
+  rubber-duck/managed-by: nginx/kustomization/ingress
   rubber-duck/overlays: ingress-demo
 
 resources:

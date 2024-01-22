@@ -1,6 +1,6 @@
 commonAnnotations:
-  rubber-duck/component: httpbin/kustomization/base
-  rubber-duck/managed-by: kustomize
+  rubber-duck/component: httpbin
+  rubber-duck/managed-by: httpbin/kustomization/base
 
 resources:
 - deployment.yaml
