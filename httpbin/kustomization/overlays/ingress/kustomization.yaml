@@ -1,0 +1,8 @@
+commonAnnotations:
+  rubber-duck/component: httpbin
+  rubber-duck/managed-by: kustomize/kustomization/ingress
+  rubber-duck/overlays: ingress-demo
+
+resources:
+- ../../base
+- ingress.yaml

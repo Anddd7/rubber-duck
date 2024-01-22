@@ -4,7 +4,7 @@ metadata:
   name: httpbin
 spec:
   rules:
-  - host: example.com
+  - host: httpbin.example.com
     http:
       paths:
       - backend:
