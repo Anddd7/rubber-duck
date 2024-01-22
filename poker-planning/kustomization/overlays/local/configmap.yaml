@@ -1,8 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: poker-planning-config
-data:
-  APP_APPLICATION__BASE_URL: http://127.0.0.1
-  GRAPHQL_ENDPOINT: http://127.0.0.1:8000
-  GRAPHQL_WS_ENDPOINT: ws://127.0.0.1:8000

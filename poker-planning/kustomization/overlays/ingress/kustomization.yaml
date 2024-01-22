@@ -1,10 +1,12 @@
 commonAnnotations:
   rubber-duck/component: poker-planning
   rubber-duck/managed-by: poker-planning/kustomization/ingress
+  rubber-duck/overlays: ingress-demo
 
 resources:
-- configmap.yaml
-- deploy-frontend.yaml
-- deploy-server.yaml
-- svc-frontend.yaml
-- svc-server.yaml
+- ../../base
+- ingress-frontend.yaml
+- ingress-server.yaml
+
+patches:
+- path: configmap.yaml

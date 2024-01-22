@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: poker-planning-config
+data:
+  APP_APPLICATION__BASE_URL: https://poker.example.com
+  GRAPHQL_ENDPOINT: https://poker.example.com/api
+  GRAPHQL_WS_ENDPOINT: wss://poker.example.com/api
