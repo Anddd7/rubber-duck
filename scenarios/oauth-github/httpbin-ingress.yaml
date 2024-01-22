@@ -23,5 +23,5 @@ spec:
         pathType: Prefix
   tls:
   - hosts:
-    - *.example.com
+    - '*.example.com'
     secretName: rubber-duck-wild-cert

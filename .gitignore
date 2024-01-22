@@ -1,3 +1,6 @@
 .tmpnb*
 
 project-*
+
+dryrun.yaml
+dryrun-*.yaml
