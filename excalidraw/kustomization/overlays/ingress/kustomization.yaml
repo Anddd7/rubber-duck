@@ -1,0 +1,13 @@
+commonAnnotations:
+  rubber-duck/component: excalidraw
+  rubber-duck/managed-by: excalidraw/kustomize/ingress
+  rubber-duck/overlays: ingress-demo
+
+resources:
+- ../../base
+- ingress-frontend.yaml
+- ingress-room.yaml
+- ingress-storage.yaml
+
+patches:
+- path: configmap.yaml

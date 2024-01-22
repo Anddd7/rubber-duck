@@ -1,11 +1,12 @@
+commonAnnotations:
+  rubber-duck/component: excalidraw
+  rubber-duck/managed-by: excalidraw/kustomize/base
+
 resources:
 - configmap.yaml
 - deploy-frontend.yaml
 - deploy-storage.yaml
 - deploy-room.yaml
-- ingress-frontend.yaml
-- ingress-storage.yaml
-- ingress-room.yaml
 - svc-frontend.yaml
 - svc-storage.yaml
 - svc-room.yaml
