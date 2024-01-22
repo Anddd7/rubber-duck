@@ -2,7 +2,7 @@
 
 Deploy poker-planning (<https://github.com/ModPhoenix/poker-planning>) to your cluster as communication tool.
 
-## Others
+## Description
 
 It doesn't provide docker image directly, so I build it from source code.
 
