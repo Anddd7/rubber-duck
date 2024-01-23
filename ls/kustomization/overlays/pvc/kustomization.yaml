@@ -1,0 +1,13 @@
+commonAnnotations:
+  rubber-duck/component: ls
+  rubber-duck/managed-by: ls/kustomization/pvc
+  rubber-duck/overlays: pvc-demo
+
+
+resources:
+- ../../base
+- pvc.yaml
+
+patches:
+- path: pod.yaml
+

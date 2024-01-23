@@ -1,0 +1,6 @@
+commonAnnotations:
+  rubber-duck/component: ls
+  rubber-duck/managed-by: ls/kustomization/ingress
+
+resources:
+- pod.yaml

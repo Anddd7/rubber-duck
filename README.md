@@ -77,3 +77,5 @@ A simple CLI to help you debug your cluster.
 Create temp notebook(folder) and file
 - [base64 shortcuts](./b64/README.md):
 Some shortcuts for base64 encoding and decoding.
+- [ls](./ls/README.md):
+Use ls to exlore the file system in pod, e.g. verify the mounted volume

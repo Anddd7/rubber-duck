@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ls-pod
+spec:
+  containers:
+  - name: ls-container
+    image: alpine
+    command: ["sleep", "3600"]
+
