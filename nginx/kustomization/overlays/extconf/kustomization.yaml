@@ -1,0 +1,26 @@
+commonAnnotations:
+  rubber-duck/component: nginx
+  rubber-duck/managed-by: nginx/kustomization/extconf
+  rubber-duck/overlays: extconf-demo
+
+resources:
+- ../../base
+
+patches:
+- path: deployment.yaml
+
+configMapGenerator:
+- name: nginx-configs
+  files:
+  - default.conf
+- name: nginx-htmls
+  files:
+  - html/index.html
+  - html/welcome.html
+  - html/404.html
+  - html/50x.html
+- name: nginx-ext-htmls
+  files:
+  - html/ext/page1.html
+  - html/ext/sub/subpage1.html
+
