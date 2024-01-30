@@ -1,6 +1,6 @@
 module github.com/Anddd7/rubber-duck/rubber-duck-cli
 
-go 1.21.5
+go 1.21.6
 
 require github.com/alecthomas/kong v0.8.1
 
@@ -10,7 +10,7 @@ require (
 )
 
 require (
-	github.com/jedib0t/go-pretty/v6 v6.5.3
+	github.com/jedib0t/go-pretty/v6 v6.5.4
 	github.com/sirupsen/logrus v1.9.3
 	golang.org/x/sys v0.16.0 // indirect
 )
