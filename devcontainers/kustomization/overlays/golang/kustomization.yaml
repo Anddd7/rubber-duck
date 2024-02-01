@@ -1,0 +1,11 @@
+commonAnnotations:
+  rubber-duck/component: devcontainers
+  rubber-duck/managed-by: devcontainers/kustomization/golang
+  rubber-duck/overlays: golang
+
+resources:
+- ../../base
+
+replicas:
+- name: golang
+  count: 1

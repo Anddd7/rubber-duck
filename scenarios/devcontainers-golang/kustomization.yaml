@@ -1,0 +1,7 @@
+namePrefix: dc-
+namespace: rubber-duck
+commonAnnotations:
+  rubber-duck/scenarios: devcontainers-golang
+
+resources:
+- ../../devcontainers/kustomization/overlays/golang

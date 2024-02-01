@@ -1,0 +1,8 @@
+namePrefix: devcontainers-
+
+# add to selector
+commonLabels:
+  rubber-duck/component: devcontainers
+
+resources:
+- golang.yaml

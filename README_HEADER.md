@@ -36,7 +36,7 @@ They, combined with kustomize in different scenarios, can be used to debug diffe
 - [x] curl as sidecar (kustomize patch)
 - [x] ~~gitclone as sidecar~~ 
   - ❗not safe
-- [ ] devcontainers
+- [x] devcontainers
 - [x] composed wiki page (patten of readme)
 - [ ] prod ready: add probe, image pull policy, resource limits ...
 

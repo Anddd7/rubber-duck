@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: golang
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      app: golang
+  template:
+    metadata:
+      labels:
+        app: golang
+    spec:
+      containers:
+      - name: golang
+        image: mcr.microsoft.com/devcontainers/go:1.21
+        command: ["/bin/sh", "-c", "while sleep 1000; do :; done"]
+        resources:
+          # at least you can work with golang extension
+          requests:
+            memory: "512Mi"
+            cpu: "250m"
+          # if you need more extensions ... increase it
+          limits:
+            memory: "2Gi"
+            cpu: "1"

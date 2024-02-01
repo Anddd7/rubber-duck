@@ -36,7 +36,7 @@ They, combined with kustomize in different scenarios, can be used to debug diffe
 - [x] curl as sidecar (kustomize patch)
 - [x] ~~gitclone as sidecar~~ 
   - ❗not safe
-- [ ] devcontainers
+- [x] devcontainers
 - [x] composed wiki page (patten of readme)
 - [ ] prod ready: add probe, image pull policy, resource limits ...
 
@@ -57,6 +57,8 @@ They, combined with kustomize in different scenarios, can be used to debug diffe
 A simple wrapper for kubectl to make it easier to use.
 - [poker-planning](./poker-planning/README.md):
 Deploy poker-planning (<https://github.com/ModPhoenix/poker-planning>) to your cluster as communication tool.
+- [Dev Container in Kubernetes](./devcontainers/README.md):
+Install a dev container inside your cluster, develop and test your application in a real environment.
 - [Rubber Duck TUI](./rubber-duck-tui/README.md):
 A reuseable TUI component for rubber duck.
 - [kustomization patches](./kustomization-patches/README.md):
