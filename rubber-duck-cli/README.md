@@ -10,9 +10,11 @@ A simple CLI to help you debug your cluster.
 - [x] k8s utils (logs, top, getxxx, export)
   - use [kw.sh](../kw/README.md) instead
 - [ ] fast deploy debugging service
+  - [x] sidecar curl 
+  - [ ] devcontainers
 - [ ] custom plugins
 - [ ] prefer settings
 - [x] decommissiong adcli
   - cidr separation
-  - git time modify
-- [ ] renovate setup
+  - ~~git time modify~~
+- [x] renovate setup

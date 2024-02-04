@@ -3,7 +3,7 @@ module github.com/Anddd7/rubber-duck/rubber-duck-cli
 go 1.21.6
 
 require (
-	github.com/Anddd7/rubber-duck/rubber-duck-tui v0.0.0-20240202011205-4be363e4fe26
+	github.com/Anddd7/rubber-duck/rubber-duck-tui v0.0.0-20240204031035-0cbd89def1e6
 	github.com/alecthomas/kong v0.8.1
 	k8s.io/apimachinery v0.29.1
 )
