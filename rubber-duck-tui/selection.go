@@ -76,6 +76,11 @@ func (m *SelectionModel[T]) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 				}
 				m.selected[m.cursor] = struct{}{}
 			}
+
+			// quick quit for single selection mode
+			if m.singleMode {
+				return m, tea.Quit
+			}
 		}
 	}
 
@@ -152,27 +157,4 @@ func (m *SelectionModel[T]) SetAutoclear() {
 
 func NewStringSelection(title string, options []string) *SelectionModel[string] {
 	return NewSelection(title, options, func(s string) string { return s })
-}
-
-// demo
-func main() {
-	// options := []string{"foo", "bar", "baz"}
-	// model := NewStringSelection("Select:", options)
-	// model.Start()
-	// fmt.Println(model.GetSelected())
-
-	type option struct {
-		id   int
-		name string
-	}
-	options := []option{
-		{id: 10086, name: "foo"},
-		{id: 20086, name: "bar"},
-		{id: 30086, name: "baz"},
-	}
-	model := NewSelection("Select:", options, func(o option) string { return o.name })
-	model.SetSingleMode()
-	model.SetAutoclear()
-	model.Start()
-	fmt.Println(model.GetSelected())
 }
