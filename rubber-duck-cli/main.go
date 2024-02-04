@@ -25,8 +25,8 @@ func main() {
 	err := ctx.Run(&GlobalSettings{
 		Version: "0.0.1",
 	})
-	if err != nil {
+	if err != nil && log.GetLevel() == log.DebugLevel {
 		log.Errorf("Got error: %+v", err)
 	}
-	// ctx.FatalIfErrorf(err)
+	ctx.FatalIfErrorf(err)
 }
