@@ -53,6 +53,10 @@ kw() {
 
       out_args+=("${args[$i]}")
       out_args_suffix+=(">" "$filename")
+    # exec to container
+    elif [[ ${args[$i]} == "-x" ]]; then
+      out_args+=("exec" "-it")
+      out_args_suffix+=("--" "bash")
     else
       out_args+=("${args[$i]}")
     fi
