@@ -37,4 +37,5 @@ So, you have to install the tools (kubectl, vscode extensions) in your windows m
 
 ### For storage(cache)
 
-WIP : add pv/pvc support
+- [ ] workspace cache, for whole user path
+- [ ] vscode cache, for extensions

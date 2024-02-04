@@ -7,6 +7,8 @@ import (
 
 var CLI struct {
 	Cidr CidrCmds `cmd:""`
+	Sidecar SidecarCmds `cmd:""`
+	Devcontainer DevcontainerCmds `cmd:""`
 }
 
 type GlobalSettings struct {
