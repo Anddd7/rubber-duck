@@ -24,3 +24,8 @@ provide some shortcuts for your frequently used kubectl command, support kubectl
 @arg $@ kubectl command
 ```
 
+```bash
+  # exec into container
+  kw -x your-pod 
+  > kubectl exec -it your-pod -- bash
+```
