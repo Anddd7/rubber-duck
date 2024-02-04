@@ -6,8 +6,8 @@ import (
 )
 
 var CLI struct {
-	Cidr CidrCmds `cmd:""`
-	Sidecar SidecarCmds `cmd:""`
+	Cidr         CidrCmds         `cmd:""`
+	Sidecar      SidecarCmds      `cmd:""`
 	Devcontainer DevcontainerCmds `cmd:""`
 }
 
@@ -25,5 +25,8 @@ func main() {
 	err := ctx.Run(&GlobalSettings{
 		Version: "0.0.1",
 	})
-	ctx.FatalIfErrorf(err)
+	if err != nil {
+		log.Errorf("Got error: %+v", err)
+	}
+	// ctx.FatalIfErrorf(err)
 }
