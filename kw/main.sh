@@ -3,12 +3,12 @@
 # @description quick export yaml file
 
 # @description provide some shortcuts for your frequently used kubectl command, support kubectl_completion (for zsh)
-# 
+#
 # @example
 #   # export resource to a temp yaml file
 #   kw get pod your-pod -oy
 #   > kubectl get pod your-pod -o yaml > pod_your-pod_112422.yaml
-# 
+#
 # @arg $@ kubectl command
 kw() {
   local args=("$@")
@@ -34,11 +34,24 @@ kw() {
   done
 
   for ((i = 1; i <= $#; i++)); do
-    if [[ ${args[$i]} == "-oy" ]]; then
+    # output to file
+    if [[ ${args[$i]} == "-oyaml" ]]; then
       local timestamp=$(date +%H%M%S)
       local filename="${resource_type}_${resource_name}_${timestamp}.yaml"
 
-      out_args+=("-o" "yaml")
+      out_args+=("${args[$i]}")
+      out_args_suffix+=(">" "$filename")
+    elif [[ ${args[$i]} == "-ojson" ]]; then
+      local timestamp=$(date +%H%M%S)
+      local filename="${resource_type}_${resource_name}_${timestamp}.json"
+
+      out_args+=("${args[$i]}")
+      out_args_suffix+=(">" "$filename")
+    elif [[ ${args[$i]} == "-owide" ]]; then
+      local timestamp=$(date +%H%M%S)
+      local filename="${resource_type}_${resource_name}_${timestamp}.txt"
+
+      out_args+=("${args[$i]}")
       out_args_suffix+=(">" "$filename")
     else
       out_args+=("${args[$i]}")
