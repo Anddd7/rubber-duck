@@ -2,6 +2,8 @@ github.com/Anddd7/rubber-duck/rubber-duck-tui v0.0.0-20240202011205-4be363e4fe26
 github.com/Anddd7/rubber-duck/rubber-duck-tui v0.0.0-20240202011205-4be363e4fe26/go.mod h1:rIcwwsYhK4qgf+SBi+kwGjqRhA0HNj3MWvU/n97hNY8=
 github.com/Anddd7/rubber-duck/rubber-duck-tui v0.0.0-20240204031035-0cbd89def1e6 h1:j1uJbZJl99drVSVYQqI7gs3GUUELbdsu9LQeiIMsn8g=
 github.com/Anddd7/rubber-duck/rubber-duck-tui v0.0.0-20240204031035-0cbd89def1e6/go.mod h1:rIcwwsYhK4qgf+SBi+kwGjqRhA0HNj3MWvU/n97hNY8=
+github.com/Anddd7/rubber-duck/rubber-duck-tui v0.0.0-20240205075017-f5ef46b1f455 h1:4gh6PEZuHJPAEIekZSv7cD3ENvBxB7NFf1hp08eGFX4=
+github.com/Anddd7/rubber-duck/rubber-duck-tui v0.0.0-20240205075017-f5ef46b1f455/go.mod h1:5DUoiUCdDXqrawAxjiXtYSwO4n/KvX+hw3EQV6Ff41A=
 github.com/alecthomas/assert/v2 v2.1.0 h1:tbredtNcQnoSd3QBhQWI7QZ3XHOVkw1Moklp2ojoH/0=
 github.com/alecthomas/assert/v2 v2.1.0/go.mod h1:b/+1DI2Q6NckYi+3mXyH3wFb8qG37K/DuK80n7WefXA=
 github.com/alecthomas/kong v0.8.1 h1:acZdn3m4lLRobeh3Zi2S2EpnXTd1mOL6U7xVml+vfkY=
