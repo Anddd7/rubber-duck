@@ -1,7 +1,8 @@
+namespace: rubber-duck
 commonAnnotations:
   rubber-duck/component: excalidraw
-  rubber-duck/managed-by: excalidraw/kustomize/ingress
-  rubber-duck/overlays: ingress-demo
+  rubber-duck/managed-by: kustomization
+  rubber-duck/overlays: ingress
 
 resources:
 - ../../base

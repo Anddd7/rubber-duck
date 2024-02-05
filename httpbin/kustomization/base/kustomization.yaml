@@ -1,7 +1,3 @@
-commonAnnotations:
-  rubber-duck/component: httpbin
-  rubber-duck/managed-by: httpbin/kustomization/base
-
 resources:
 - deployment.yaml
 - svc.yaml

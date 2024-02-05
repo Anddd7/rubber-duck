@@ -1,6 +1,7 @@
+namespace: rubber-duck
 commonAnnotations:
   rubber-duck/component: devcontainers
-  rubber-duck/managed-by: devcontainers/kustomization/golang
+  rubber-duck/managed-by: kustomization
   rubber-duck/overlays: golang
 
 resources:

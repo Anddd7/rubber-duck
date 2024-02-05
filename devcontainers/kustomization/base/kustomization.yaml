@@ -1,4 +1,4 @@
-namePrefix: devcontainers-
+namePrefix: dc-
 
 # add to selector
 commonLabels:

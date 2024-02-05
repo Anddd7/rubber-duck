@@ -1,8 +1,8 @@
+namespace: rubber-duck
 commonAnnotations:
   rubber-duck/component: ls
-  rubber-duck/managed-by: ls/kustomization/pvc
-  rubber-duck/overlays: pvc-demo
-
+  rubber-duck/managed-by: kustomization
+  rubber-duck/overlays: pvc
 
 resources:
 - ../../base

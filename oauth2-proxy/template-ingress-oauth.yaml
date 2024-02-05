@@ -1,12 +1,10 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  annotations:
-    kubernetes.io/ingress.allow-http: 'false'
-  name: oauth2-proxy
+  name: your-app-oauth
 spec:
   rules:
-  - host: example.com
+  - host: <host>
     http:
       paths:
       - backend:
@@ -16,3 +14,7 @@ spec:
               number: 4180
         path: /oauth2
         pathType: Prefix
+  tls:
+  - hosts:
+    - <tls-host>
+    secretName: <tls-cert>

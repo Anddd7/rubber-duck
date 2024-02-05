@@ -1,7 +1,3 @@
-commonAnnotations:
-  rubber-duck/component: excalidraw
-  rubber-duck/managed-by: excalidraw/kustomize/base
-
 resources:
 - configmap.yaml
 - deploy-frontend.yaml

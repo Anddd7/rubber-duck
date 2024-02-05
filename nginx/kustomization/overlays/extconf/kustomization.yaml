@@ -1,7 +1,8 @@
+namespace: rubber-duck
 commonAnnotations:
   rubber-duck/component: nginx
-  rubber-duck/managed-by: nginx/kustomization/extconf
-  rubber-duck/overlays: extconf-demo
+  rubber-duck/managed-by: kustomization
+  rubber-duck/overlays: extconf
 
 resources:
 - ../../base
@@ -23,4 +24,3 @@ configMapGenerator:
   files:
   - html/ext/page1.html
   - html/ext/sub/subpage1.html
-

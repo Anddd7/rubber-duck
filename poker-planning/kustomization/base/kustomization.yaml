@@ -1,7 +1,3 @@
-commonAnnotations:
-  rubber-duck/component: poker-planning
-  rubber-duck/managed-by: poker-planning/kustomization/ingress
-
 resources:
 - configmap.yaml
 - deploy-frontend.yaml

@@ -1,7 +1,8 @@
+namespace: rubber-duck
 commonAnnotations:
   rubber-duck/component: httpbin
-  rubber-duck/managed-by: httpbin/kustomization/ingress
-  rubber-duck/overlays: ingress-demo
+  rubber-duck/managed-by: kustomization
+  rubber-duck/overlays: ingress
 
 resources:
 - ../../base

@@ -1,15 +1,15 @@
-namePrefix: oauth-github-
+namePrefix: sn-
 namespace: rubber-duck
 commonAnnotations:
   rubber-duck/scenarios: oauth-github
 
 resources:
-- ../../oauth2-proxy/kustomization/overlays/ingress
 - ../../httpbin/kustomization/overlays/ingress
+- ingress.yaml
+- ../../oauth2-proxy/kustomization/base
 
 patches:
-# overwrite the ingresses with tls
-- path: oauth-ingress.yaml
-- path: httpbin-ingress.yaml
+# overwrite the ingress with tls
+- path: ingress-httpbin.yaml
 # overwrite the credentials
 - path: secret.yaml

@@ -1,4 +1,4 @@
-namePrefix: dc-
+namePrefix: sn-
 namespace: rubber-duck
 commonAnnotations:
   rubber-duck/scenarios: devcontainers-golang

@@ -1,8 +1,6 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  annotations:
-    kubernetes.io/ingress.allow-http: 'false'
   name: poker-planning-frontend
 spec:
   rules:

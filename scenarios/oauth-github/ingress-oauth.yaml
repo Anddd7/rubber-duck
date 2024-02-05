@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   annotations:
     kubernetes.io/ingress.allow-http: 'false'
-    cert-manager.io/cluster-issuer: letsencrypt
+    nginx.ingress.kubernetes.io/force-ssl-redirect: 'true'
   name: oauth2-proxy
 spec:
   rules:
