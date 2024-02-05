@@ -3,8 +3,9 @@ module github.com/Anddd7/rubber-duck/rubber-duck-cli
 go 1.21.6
 
 require (
-	github.com/Anddd7/rubber-duck/rubber-duck-tui v0.0.0-20240204031035-0cbd89def1e6
+	github.com/Anddd7/rubber-duck/rubber-duck-tui v0.0.0-20240205075017-f5ef46b1f455
 	github.com/alecthomas/kong v0.8.1
+	github.com/pkg/errors v0.9.1
 	k8s.io/apimachinery v0.29.1
 )
 
@@ -39,7 +40,6 @@ require (
 	github.com/muesli/reflow v0.3.0 // indirect
 	github.com/muesli/termenv v0.15.2 // indirect
 	github.com/munnerz/goautoneg v0.0.0-20191010083416-a7dc8b61c822 // indirect
-	github.com/pkg/errors v0.9.1 // indirect
 	github.com/rivo/uniseg v0.4.6 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	golang.org/x/net v0.20.0 // indirect
@@ -65,6 +65,6 @@ require (
 	github.com/jedib0t/go-pretty/v6 v6.5.4
 	github.com/sirupsen/logrus v1.9.3
 	golang.org/x/sys v0.16.0 // indirect
-	k8s.io/api v0.29.1 // indirect
+	k8s.io/api v0.29.1
 	k8s.io/client-go v0.29.1
 )
