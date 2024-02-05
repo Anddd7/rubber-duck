@@ -13,7 +13,26 @@ spec:
         app: nginx-app
     spec:
       containers:
-        - name: nginx
-          image: docker.io/nginx:latest
-          ports:
-            - containerPort: 80
+      - name: nginx
+        image: docker.io/nginx:latest
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: 50m
+            memory: 64Mi
+          limits:
+            cpu: 100m
+            memory: 128Mi
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 3
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 3
+          periodSeconds: 10

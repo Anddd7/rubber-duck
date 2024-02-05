@@ -27,3 +27,22 @@ spec:
         - containerPort: 8000
           name: http
           protocol: TCP
+        resources:
+          limits:
+            cpu: 100m
+            memory: 128Mi
+          requests:
+            cpu: 50m
+            memory: 64Mi
+        livenessProbe:
+          httpGet:
+            path: /health_check
+            port: 8000
+          initialDelaySeconds: 3
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /health_check
+            port: 8000
+          initialDelaySeconds: 3
+          periodSeconds: 10
