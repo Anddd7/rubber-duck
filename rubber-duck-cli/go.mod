@@ -63,7 +63,6 @@ require (
 
 require (
 	github.com/jedib0t/go-pretty/v6 v6.5.4
-	github.com/sirupsen/logrus v1.9.3
 	golang.org/x/sys v0.16.0 // indirect
 	k8s.io/api v0.29.1
 	k8s.io/client-go v0.29.1

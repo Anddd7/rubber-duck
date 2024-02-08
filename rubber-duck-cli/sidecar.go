@@ -5,8 +5,9 @@ import (
 
 	tui "github.com/Anddd7/rubber-duck/rubber-duck-tui"
 
+	"log/slog"
+
 	"github.com/pkg/errors"
-	log "github.com/sirupsen/logrus"
 
 	corev1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -101,7 +102,7 @@ func (cmd *SidecarPatchCmd) Run(g *GlobalSettings) error {
 		deployname = selected[0]
 	}
 
-	log.Infof("selected deployment %s", deployname)
+	slog.Info("selected deployment %s", deployname)
 
 	// Get the specified Deployment
 	deploy, err := clientset.AppsV1().Deployments(namespace).Get(context.TODO(), deployname, metav1.GetOptions{})
@@ -189,7 +190,7 @@ func (cmd *SidecarRestoreCmd) Run(g *GlobalSettings) error {
 		deployname = selected[0]
 	}
 
-	log.Infof("selected deployment %s", deployname)
+	slog.Info("selected deployment %s", deployname)
 
 	// Get the specified Deployment
 	deploy, err := clientset.AppsV1().Deployments(namespace).Get(context.TODO(), deployname, metav1.GetOptions{})
@@ -246,7 +247,7 @@ func connect() (kubernetes.Interface, string, error) {
 	if err != nil {
 		return nil, "", err
 	}
-	log.Infof("current context: %s, namespace: %s", rawConfig.CurrentContext, namespace)
+	slog.Info("current context: %s, namespace: %s", rawConfig.CurrentContext, namespace)
 
 	// Get clientset
 	restConfig, err := clientConfig.ClientConfig()

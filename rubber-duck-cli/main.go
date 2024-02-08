@@ -1,8 +1,11 @@
 package main
 
 import (
+	"fmt"
+	"log/slog"
+	"os"
+
 	"github.com/alecthomas/kong"
-	log "github.com/sirupsen/logrus"
 )
 
 var CLI struct {
@@ -16,17 +19,20 @@ type GlobalSettings struct {
 }
 
 func main() {
-	ctx := kong.Parse(&CLI)
+	// for debugging
+	opts := slog.HandlerOptions{
+		Level: slog.LevelDebug,
+	}
+	slog.SetDefault(slog.New(slog.NewTextHandler(os.Stderr, &opts)))
 
-	// TODO for development
-	log.SetLevel(log.DebugLevel)
-	log.Debugf("cmd: %s", ctx.Command())
+	ctx := kong.Parse(&CLI)
+	slog.Debug(fmt.Sprintf("cmd: %s", ctx.Command()))
 
 	err := ctx.Run(&GlobalSettings{
 		Version: "0.0.1",
 	})
-	if err != nil && log.GetLevel() == log.DebugLevel {
-		log.Errorf("Got error: %+v", err)
+	if err != nil {
+		slog.Debug(fmt.Sprintf("Got error: %+v", err))
 	}
 	ctx.FatalIfErrorf(err)
 }
