@@ -1,6 +1,6 @@
 module github.com/Anddd7/rubber-duck/rubber-duck-cli
 
-go 1.21.6
+go 1.22.0
 
 require (
 	github.com/Anddd7/rubber-duck/rubber-duck-tui v0.0.0-20240205075017-f5ef46b1f455
