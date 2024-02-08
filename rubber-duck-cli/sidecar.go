@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 
 	tui "github.com/Anddd7/rubber-duck/rubber-duck-tui"
 
@@ -102,7 +103,7 @@ func (cmd *SidecarPatchCmd) Run(g *GlobalSettings) error {
 		deployname = selected[0]
 	}
 
-	slog.Info("selected deployment %s", deployname)
+	slog.Info(fmt.Sprintf("selected deployment %s", deployname))
 
 	// Get the specified Deployment
 	deploy, err := clientset.AppsV1().Deployments(namespace).Get(context.TODO(), deployname, metav1.GetOptions{})
@@ -190,7 +191,7 @@ func (cmd *SidecarRestoreCmd) Run(g *GlobalSettings) error {
 		deployname = selected[0]
 	}
 
-	slog.Info("selected deployment %s", deployname)
+	slog.Info(fmt.Sprintf("selected deployment %s", deployname))
 
 	// Get the specified Deployment
 	deploy, err := clientset.AppsV1().Deployments(namespace).Get(context.TODO(), deployname, metav1.GetOptions{})
