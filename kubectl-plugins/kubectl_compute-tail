@@ -1,0 +1,14 @@
+#!/bin/bash
+
+out=(
+  "--label	Specify a label to select pods by"
+  "--since	Specify the duration of time before the current time from which to begin output"
+  "--since-time	Specify a timestamp (RFC3339) to start since from"
+  "--limit	Limit the number of lines to return"
+  "--tail	 Number of lines to show from the end of the logs for each container in the pod"
+  ":4"
+)
+
+if [ -n "${out%%:*}" ]; then
+  printf "%s\n" "${out[@]}"
+fi

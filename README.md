@@ -53,31 +53,33 @@ They, combined with kustomize in different scenarios, can be used to debug diffe
   
 ## Usages
 
-- [kw: kubectl wrapper](./kw/README.md):
-A simple wrapper for kubectl to make it easier to use.
-- [poker-planning](./poker-planning/README.md):
-Deploy poker-planning (<https://github.com/ModPhoenix/poker-planning>) to your cluster as communication tool.
-- [Dev Container in Kubernetes](./devcontainers/README.md):
-Install a dev container inside your cluster, develop and test your application in a real environment.
-- [Rubber Duck TUI](./rubber-duck-tui/README.md):
-A reuseable TUI component for rubber duck.
+- [oauth2-proxy](./oauth2-proxy/README.md):
+Deploy oauth2-proxy(<https://github.com/oauth2-proxy/oauth2-proxy>) to setup oauth2 authentication for you application.
+- [Kubectl Plugins](./kubectl-plugins/README.md):
+Some simple plugins to extend kubectl functionality.
+- [Chatbot 9527](./chatbot9527/README.md):
+Deploy a chatbot for personal usage, it should be able to host locally
+- [httpbin](./httpbin/README.md):
+Use httpbin(<https://httpbin.org/>) to test the connection to your pod.
+- [zsh tools](./zsh/README.md):
+Misc tools for zsh
+- [tempfile](./tmpnb/README.md):
+Create temp notebook(folder) and file
 - [kustomization patches](./kustomization-patches/README.md):
 A bunch of common patches (as component), e.g. sidecars, annotations
 - [nginx](./nginx/README.md):
 A simple echo service to test the connection to your pod.
-- [oauth2-proxy](./oauth2-proxy/README.md):
-Deploy oauth2-proxy(<https://github.com/oauth2-proxy/oauth2-proxy>) to setup oauth2 authentication for you application.
-- [zsh tools](./zsh/README.md):
-Misc tools for zsh
-- [httpbin](./httpbin/README.md):
-Use httpbin(<https://httpbin.org/>) to test the connection to your pod.
-- [excalidraw collabration](./excalidraw/README.md):
-Deploy excalidraw(<https://github.com/excalidraw/excalidraw>) to your cluster as communication tool.
-- [Rubber Duck CLI](./rubber-duck-cli/README.md):
-A simple CLI to help you debug your cluster.
-- [tempfile](./tmpnb/README.md):
-Create temp notebook(folder) and file
 - [base64 shortcuts](./b64/README.md):
 Some shortcuts for base64 encoding and decoding.
+- [Rubber Duck CLI](./rubber-duck-cli/README.md):
+A simple CLI to help you debug your cluster.
 - [ls](./ls/README.md):
 Use ls to exlore the file system in pod, e.g. verify the mounted volume
+- [Dev Container in Kubernetes](./devcontainers/README.md):
+Install a dev container inside your cluster, develop and test your application in a real environment.
+- [Rubber Duck TUI](./rubber-duck-tui/README.md):
+A reuseable TUI component for rubber duck.
+- [poker-planning](./poker-planning/README.md):
+Deploy poker-planning (<https://github.com/ModPhoenix/poker-planning>) to your cluster as communication tool.
+- [excalidraw collabration](./excalidraw/README.md):
+Deploy excalidraw(<https://github.com/excalidraw/excalidraw>) to your cluster as communication tool.

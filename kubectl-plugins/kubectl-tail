@@ -1,23 +1,14 @@
 #!/bin/bash
 
 print_help() {
-  echo "Usage: kubectl-tail <name> [-l <label>] [--since <duration>] [--since-time <time>] [--limit <lines>] [--tail <lines>]"
+  echo "Usage: kubectl-tail [-l <label>] [--since <duration>] [--since-time <time>] [--limit <lines>] [--tail <lines>]"
 }
-
-# create a shell command, to interact with kubectl returns combined logs
-# <name> search pod by name
-# -l <lable> search pod by label
-# --since <duration> only return logs newer than a relative duration like 5s, 2m, or 3h
-# --since-time <time> only return logs after a specific date (RFC3339)
-# --limit <bytes> return at most <bytes> of logs, similar like --head
-# --tail <lines> return the last <lines> lines
 
 if [ -z "$1" ]; then
   print_help
   exit 1
 fi
 
-name=""
 label=""
 since=""
 since_time=""
@@ -47,58 +38,49 @@ while [ -n "$1" ]; do
     tail=$2
     shift
     ;;
-  -h | --help)
+  *)
     print_help
     exit 0
-    ;;
-  *)
-    name=$1
     ;;
   esac
   shift
 done
 
-# echo "name: $name"
-# echo "label: $label"
-# echo "since: $since"
-# echo "since_time: $since_time"
-# echo "limit: $limit"
-# echo "tail: $tail"
-
-# get pod names
-if [ -z "$label" ]; then
-  pods=$(kubectl get pods --no-headers -o name)
-else
-  pods=$(kubectl get pods --no-headers -o name -l $label)
-fi
-
-# grep by input
-if [ -n "$name" ]; then
-  pods=$(echo "$pods" | grep $name)
-fi
-
-# get logs
-current_time=$(date +%s)
-filename="logs_$name_$current_time.log"
-args=(
-  --timestamps
-  --ignore-errors
-)
-
+args=()
 if [ -n "$since" ]; then
-  args+=("--since=$since")
+  args+=("--since $since")
 fi
 if [ -n "$since_time" ]; then
-  args+=("--since-time=$since_time")
+  args+=("--since-time $since_time")
 fi
 if [ $limit -gt 0 ]; then
-  args+=("--limit-bytes=$limit")
+  args+=("--limit-bytes $limit")
   # reset tail if limit is set
   tail=0
 fi
 if [ $tail -gt 0 ]; then
-  args+=("--tail=$tail")
+  args+=("--tail $tail")
 fi
+
+# filter pods with fzf
+if [ -z "$label" ]; then
+  pods=$(kubectl get pods -o name | fzf -m --header="select pods, args: ${args[*]}")
+else
+  pods=$(kubectl get pods -l $label -o name | fzf -m --header="select pods, args: ${args[*]}")
+fi
+
+if [ -z "$pods" ]; then
+  echo "No pods selected"
+  exit 0
+fi
+
+# get logs
+current_time=$(date +%s)
+filename="logs_$current_time.log"
+args+=(
+  --timestamps
+  --ignore-errors
+)
 
 # fetch logs
 echo "" >>$filename
