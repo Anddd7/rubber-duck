@@ -28,17 +28,8 @@ They, combined with kustomize in different scenarios, can be used to debug diffe
 
 ## Features
 
-- [x] ~~find a way to reduce the code of kustomization.yaml (or auto generate)~~
-- [x] ~~makefile, utilize the envsubs with kustomize~~
-  - keep it simple stupid, declaritive first
-- [x] tui engine for daily operations
-  - see detials in[rubber-duck-cli](./rubber-duck-cli/README.md)
-- [x] curl as sidecar (kustomize patch)
-- [x] ~~gitclone as sidecar~~ 
-  - ❗not safe
-- [x] devcontainers
-- [x] composed wiki page (patten of readme)
 - [ ] prod ready: add probe, image pull policy, resource limits ...
+- [ ] more kubectl plugins ...
 
 ### relavant tools
 
