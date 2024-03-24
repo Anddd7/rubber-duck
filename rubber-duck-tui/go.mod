@@ -1,11 +1,11 @@
 module github.com/Anddd7/rubber-duck/rubber-duck-tui
 
-go 1.22.0
+go 1.22.1
 
 require (
 	github.com/charmbracelet/bubbletea v0.25.0
-	github.com/charmbracelet/lipgloss v0.9.1
-	github.com/jedib0t/go-pretty/v6 v6.5.4
+	github.com/charmbracelet/lipgloss v0.10.0
+	github.com/jedib0t/go-pretty/v6 v6.5.6
 )
 
 require (
@@ -25,6 +25,6 @@ require (
 	github.com/mattn/go-runewidth v0.0.15 // indirect
 	github.com/muesli/reflow v0.3.0 // indirect
 	github.com/muesli/termenv v0.15.2 // indirect
-	github.com/rivo/uniseg v0.4.6 // indirect
+	github.com/rivo/uniseg v0.4.7 // indirect
 	golang.org/x/sys v0.16.0 // indirect
 )
