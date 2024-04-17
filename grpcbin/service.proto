@@ -1,0 +1,72 @@
+syntax = "proto3";
+
+package main;
+
+option go_package = "github.com/Anddd7/rubber-duck/grpcbin/pb";
+
+service GrpcbinService {
+    // Unary RPC
+    rpc Unary(UnaryRequest) returns (UnaryResponse);
+
+    // Server streaming RPC
+    rpc ServerStreaming(ServerStreamingRequest) returns (stream ServerStreamingResponse);
+
+    // Client streaming RPC
+    rpc ClientStreaming(stream ClientStreamingRequest) returns (ClientStreamingResponse);
+
+    // Bidirectional streaming RPC
+    rpc BidirectionalStreaming(stream BidirectionalStreamingRequest) returns (stream BidirectionalStreamingResponse);
+}
+
+message RequestAttributes {
+    int32 http_code = 1;
+    int32 delay = 2;
+    map<string, string> response_headers = 3;
+}
+
+message ResponseAttributes {
+    string requester_ip = 1;
+    string requester_host = 2;
+    string requester_user_agent = 3;
+    map<string, string> request_headers = 4;
+}
+
+message UnaryRequest {
+    string data = 1;
+    RequestAttributes request_attributes = 2;
+}
+
+message UnaryResponse {
+    string result = 1;
+    ResponseAttributes response_attributes = 2;
+}
+
+message ServerStreamingRequest {
+    string data = 1;
+    RequestAttributes request_attributes = 2;
+}
+
+message ServerStreamingResponse {
+    repeated string result = 1;
+    ResponseAttributes response_attributes = 2;
+}
+
+message ClientStreamingRequest {
+    repeated string data = 1;
+    RequestAttributes request_attributes = 2;
+}
+
+message ClientStreamingResponse {
+    string result = 1;
+    ResponseAttributes response_attributes = 2;
+}
+
+message BidirectionalStreamingRequest {
+    repeated string data = 1;
+    RequestAttributes request_attributes = 2;
+}
+
+message BidirectionalStreamingResponse {
+    string result = 1;
+    ResponseAttributes response_attributes = 2;
+}
