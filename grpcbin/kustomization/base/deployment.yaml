@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grpcbin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: grpcbin-app
+  template:
+    metadata:
+      labels:
+        app: grpcbin-app
+    spec:
+      containers:
+      - image: ghcr.io/anddd7/grpcbin
+        name: grpcbin
+        ports:
+        - containerPort: 50051
+        resources:
+          limits:
+            cpu: 100m
+            memory: 128Mi
+          requests:
+            cpu: 50m
+            memory: 64Mi
+          # TODO use grpc health protocol instead
+          # https://github.com/grpc/grpc/blob/master/doc/health-checking.md
+          # https://github.com/grpc-ecosystem/grpc-health-probe?tab=readme-ov-file
+          livenessProbe:
+            tcpSocket:
+              port: 50051
+            initialDelaySeconds: 10
+            periodSeconds: 20
+          readinessProbe:
+            tcpSocket:
+              port: 50051
+            initialDelaySeconds: 5
+            periodSeconds: 10

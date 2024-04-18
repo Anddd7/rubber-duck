@@ -1,0 +1,9 @@
+namespace: rubber-duck
+commonAnnotations:
+  rubber-duck/component: grpcbin
+  rubber-duck/managed-by: kustomization
+  rubber-duck/overlays: ingress
+
+resources:
+- ../../base
+- ingress.yaml
