@@ -2,7 +2,17 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: grpcbin
+  annotations:
+    nginx.ingress.kubernetes.io/backend-protocol: "GRPC"
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: "10s"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "60s"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "60s"
+    nginx.ingress.kubernetes.io/server-snippet: |
+      grpc_connect_timeout 10s;
+      grpc_read_timeout 60s;
+      grpc_send_timeout 60s;
 spec:
+  ingressClassName: nginx
   rules:
   - host: grpcbin.example.com
     http:
