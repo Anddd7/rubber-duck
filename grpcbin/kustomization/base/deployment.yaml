@@ -13,7 +13,7 @@ spec:
         app: grpcbin-app
     spec:
       containers:
-      - image: ghcr.io/anddd7/grpcbin
+      - image: ghcr.io/anddd7/grpcbin:latest
         name: grpcbin
         ports:
         - containerPort: 50051
