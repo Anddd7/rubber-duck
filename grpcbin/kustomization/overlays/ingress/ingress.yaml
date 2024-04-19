@@ -4,13 +4,14 @@ metadata:
   name: grpcbin
   annotations:
     nginx.ingress.kubernetes.io/backend-protocol: "GRPC"
-    nginx.ingress.kubernetes.io/proxy-connect-timeout: "10s"
-    nginx.ingress.kubernetes.io/proxy-send-timeout: "60s"
-    nginx.ingress.kubernetes.io/proxy-read-timeout: "60s"
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: 5
+    nginx.ingress.kubernetes.io/proxy-send-timeout: 10
+    nginx.ingress.kubernetes.io/proxy-read-timeout: 10
+    # need to enable server-snippet in configmap
     nginx.ingress.kubernetes.io/server-snippet: |
-      grpc_connect_timeout 10s;
-      grpc_read_timeout 60s;
-      grpc_send_timeout 60s;
+      grpc_connect_timeout 5s;
+      grpc_read_timeout 10s;
+      grpc_send_timeout 10s;
 spec:
   ingressClassName: nginx
   rules:
