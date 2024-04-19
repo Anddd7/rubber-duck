@@ -23,17 +23,11 @@ spec:
             memory: 128Mi
           requests:
             cpu: 50m
-            memory: 64Mi
-        # TODO use grpc health protocol instead
-        # https://github.com/grpc/grpc/blob/master/doc/health-checking.md
-        # https://github.com/grpc-ecosystem/grpc-health-probe?tab=readme-ov-file
         livenessProbe:
-          tcpSocket:
-            port: 50051
+          exec:
+            command: ["/bin/grpc_health_probe", "-addr=:50051"]
           initialDelaySeconds: 10
-          periodSeconds: 20
         readinessProbe:
-          tcpSocket:
-            port: 50051
+          exec:
+            command: ["/bin/grpc_health_probe", "-addr=:50051"]
           initialDelaySeconds: 5
-          periodSeconds: 10
