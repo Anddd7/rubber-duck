@@ -26,8 +26,6 @@ spec:
         livenessProbe:
           exec:
             command: ["/bin/grpc_health_probe", "-addr=:50051"]
-          initialDelaySeconds: 10
         readinessProbe:
           exec:
             command: ["/bin/grpc_health_probe", "-addr=:50051"]
-          initialDelaySeconds: 5
