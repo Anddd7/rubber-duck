@@ -1,0 +1,33 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: grpcbin
+  annotations:
+    nginx.ingress.kubernetes.io/backend-protocol: "GRPCS"
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: 5
+    nginx.ingress.kubernetes.io/proxy-send-timeout: 10
+    nginx.ingress.kubernetes.io/proxy-read-timeout: 10
+    # need to enable server-snippet in configmap
+    nginx.ingress.kubernetes.io/server-snippet: |
+      grpc_connect_timeout 5s;
+      grpc_read_timeout 10s;
+      grpc_send_timeout 10s;
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: grpcbin.example.com
+    http:
+      paths:
+      - backend:
+          service:
+            name: grpcbin
+            port:
+              number: 50051
+        path: /
+        pathType: Prefix
+  # comment tls setting to access grpcbin with http 8080
+  # enable tls setting to access grpcbin with https 8443
+  tls:
+  - hosts:
+    - grpcbin.example.com
+    secretName: grpcbin-tls

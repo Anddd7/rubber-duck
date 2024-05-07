@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grpcbin
+spec:
+  template:
+    spec:
+      containers:
+      - image: ghcr.io/anddd7/grpcbin:latest
+        name: grpcbin
+        args:
+        - serve
+        - --tls-cert=/certs/server.crt
+        - --tls-key=/certs/server.key
+        livenessProbe:
+          exec:
+            command: ["/bin/grpc_health_probe", "-addr=:50051", "-tls", "-tls-no-verify"]
+        readinessProbe:
+          exec:
+            command: ["/bin/grpc_health_probe", "-addr=:50051", "-tls", "-tls-no-verify"]
+

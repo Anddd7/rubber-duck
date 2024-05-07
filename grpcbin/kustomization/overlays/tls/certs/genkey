@@ -1,0 +1,19 @@
+#!/bin/bash
+
+CN="/CN=grpcbin.example.com"
+SAN="subjectAltName = DNS:grpcbin.example.com"
+
+openssl genrsa -out tls.key 2048
+openssl req -new -key tls.key -out tls.csr -subj $CN -config <(
+  echo "[req]"
+  echo "req_extensions = req_ext"
+  echo "[req_ext]"
+  echo $SAN
+)
+
+openssl x509 -req -days 365 -in tls.csr -signkey tls.key -out tls.crt -extensions req_ext -extfile <(
+  echo "[req_ext]"
+  echo $SAN
+)
+
+rm tls.csr

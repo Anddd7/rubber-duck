@@ -1,0 +1,18 @@
+namespace: rubber-duck
+commonAnnotations:
+  rubber-duck/component: grpcbin
+  rubber-duck/managed-by: kustomization
+  rubber-duck/overlays: tls
+
+resources:
+- ../../base
+- ingress.yaml
+
+patches:
+- path: deployment.yaml
+
+secretGenerator:
+- name: grpcbin-tls
+  files:
+  - certs/tls.crt
+  - certs/tls.key

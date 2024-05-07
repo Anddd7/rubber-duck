@@ -28,8 +28,17 @@ They, combined with kustomize in different scenarios, can be used to debug diffe
 
 ## Features
 
+- [x] ~~find a way to reduce the code of kustomization.yaml (or auto generate)~~
+- [x] ~~makefile, utilize the envsubs with kustomize~~
+  - keep it simple stupid, declaritive first
+- [x] tui engine for daily operations
+  - see detials in[rubber-duck-cli](./rubber-duck-cli/README.md)
+- [x] curl as sidecar (kustomize patch)
+- [x] ~~gitclone as sidecar~~ 
+  - ❗not safe
+- [x] devcontainers
+- [x] composed wiki page (patten of readme)
 - [ ] prod ready: add probe, image pull policy, resource limits ...
-- [ ] more kubectl plugins ...
 
 ### relavant tools
 
@@ -46,6 +55,8 @@ They, combined with kustomize in different scenarios, can be used to debug diffe
 
 - [oauth2-proxy](./oauth2-proxy/README.md):
 Deploy oauth2-proxy(<https://github.com/oauth2-proxy/oauth2-proxy>) to setup oauth2 authentication for you application.
+- [Grpcbin](./grpcbin/README.md):
+Similar with httpbin(<https://httpbin.org/>) to test the grpc connection.
 - [Kubectl Plugins](./kubectl-plugins/README.md):
 Some simple plugins to extend kubectl functionality.
 - [Chatbot 9527](./chatbot9527/README.md):
