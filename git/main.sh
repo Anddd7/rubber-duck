@@ -118,9 +118,8 @@ EOF
 }
 
 alias gcz="git cz"
-alias gcm="git cz --subject"
 
-alias gcmfeat="git cz --type feat --subject"
-alias gcmdocs="git cz --type docs --subject"
-alias gcmfix="git cz --type fix --subject"
-alias gcmtest="git cz --type test --subject"
+alias gczfeat="git cz --type feat --subject"
+alias gczdocs="git cz --type docs --subject"
+alias gczfix="git cz --type fix --subject"
+alias gcztest="git cz --type test --subject"
