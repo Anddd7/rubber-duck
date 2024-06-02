@@ -95,14 +95,13 @@ cfg_precommit() {
     cat <<EOF >.pre-commit-config.yaml
 repos:
 - repo: https://github.com/gitleaks/gitleaks
-  rev: v8.18.2
+  rev: v8.18.3
   hooks:
   - id: gitleaks
 - repo: https://github.com/pre-commit/pre-commit-hooks
   rev: v4.6.0
   hooks:
   - id: check-added-large-files
-  - id: check-illegal-windows-names
   - id: check-json
   - id: check-yaml
   - id: end-of-file-fixer
