@@ -116,7 +116,7 @@ EOF
     pre-commit install-hooks
 }
 
-alias gcz="git cz"
+alias gcz="git cz --subject"
 
 alias gczfeat="git cz --type feat --subject"
 alias gczdocs="git cz --type docs --subject"
