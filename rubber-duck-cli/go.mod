@@ -3,10 +3,10 @@ module github.com/Anddd7/rubber-duck/rubber-duck-cli
 go 1.22.2
 
 require (
-	github.com/Anddd7/rubber-duck/rubber-duck-tui v0.0.0-20240420002840-c8e3b02f6c35
+	github.com/Anddd7/rubber-duck/rubber-duck-tui v0.0.0-20240602021103-12706558f9a7
 	github.com/alecthomas/kong v0.9.0
 	github.com/pkg/errors v0.9.1
-	k8s.io/apimachinery v0.30.0
+	k8s.io/apimachinery v0.30.2
 )
 
 require (
@@ -62,8 +62,8 @@ require (
 )
 
 require (
-	github.com/jedib0t/go-pretty/v6 v6.5.8
+	github.com/jedib0t/go-pretty/v6 v6.5.9
 	golang.org/x/sys v0.18.0 // indirect
-	k8s.io/api v0.30.0
-	k8s.io/client-go v0.30.0
+	k8s.io/api v0.30.2
+	k8s.io/client-go v0.30.2
 )
