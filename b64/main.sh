@@ -47,8 +47,7 @@ b64k8s() {
     return 1
   fi
 
-  # 提取data部分，进行Base64加密
-  cat "$input_file" | yq eval -P '.data |= with_entries(.value |= @base64)' - >"$output_file"
+  cat "$input_file" | yq eval -P '.data = (.stringData | with_entries(.value |= @base64)) | del(.stringData)' - >"$output_file"
 
   echo "Secret encrypted and saved to: $output_file"
 }
@@ -76,7 +75,7 @@ b64dk8s() {
     return 1
   fi
 
-  cat "$input_file" | yq eval -P '.data |= with_entries(.value |= @base64d)' - >"$output_file"
+  cat "$input_file" | yq eval -P '.stringData = (.data | with_entries(.value |= @base64d)) | del(.data)' - >"$output_file"
 
   echo "Secret decrypted and saved to: $output_file"
 }
