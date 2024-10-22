@@ -122,3 +122,7 @@ alias gczfeat="git cz --type feat --subject"
 alias gczdocs="git cz --type docs --subject"
 alias gczfix="git cz --type fix --subject"
 alias gcztest="git cz --type test --subject"
+
+fzf_gbd() {
+    git branch | grep -v "main\|master" | fzf --multi | xargs git branch -d
+}
