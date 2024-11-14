@@ -10,7 +10,7 @@
 #   czmsg
 #
 # @stdout new changelog.config.js file
-cfg_gcz() {
+gczchangelog() {
     cat <<EOF >changelog.config.js
 module.exports = {
     disableEmoji: false,
@@ -85,44 +85,8 @@ module.exports = {
 EOF
 }
 
-# @description new pre-commit config in local repo
-#
-# @example
-#   new_precommit
-#
-# @stdout new .pre-commit-config.yaml file
-cfg_precommit() {
-    cat <<EOF >.pre-commit-config.yaml
-repos:
-- repo: https://github.com/gitleaks/gitleaks
-  rev: v8.18.3
-  hooks:
-  - id: gitleaks
-- repo: https://github.com/pre-commit/pre-commit-hooks
-  rev: v4.6.0
-  hooks:
-  - id: check-added-large-files
-  - id: check-json
-  - id: check-yaml
-  - id: end-of-file-fixer
-  - id: trailing-whitespace
-  # - id: check-merge-conflict
-  # - id: check-xml
-  # - id: check-toml
-  # - id: file-contents-sorter
-EOF
-
-    pre-commit install
-    pre-commit install-hooks
-}
-
 alias gcz="git cz --subject"
 
-alias gczfeat="git cz --type feat --subject"
-alias gczdocs="git cz --type docs --subject"
-alias gczfix="git cz --type fix --subject"
-alias gcztest="git cz --type test --subject"
-
-fzf_gbd() {
+fzfgbd() {
     git branch | grep -v "main\|master" | fzf --multi | xargs git branch -d
 }
