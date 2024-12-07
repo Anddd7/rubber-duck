@@ -4,7 +4,7 @@ go 1.22.2
 
 require (
 	github.com/Anddd7/rubber-duck/rubber-duck-tui v0.0.0-20240420002840-c8e3b02f6c35
-	github.com/alecthomas/kong v0.9.0
+	github.com/alecthomas/kong v1.6.0
 	github.com/pkg/errors v0.9.1
 	k8s.io/apimachinery v0.30.0
 )
