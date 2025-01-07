@@ -1,93 +1,170 @@
 #!/bin/bash
 
-print_help() {
-  echo "Usage: kubectl-tail [-l <label>] [--since <duration>] [--since-time <time>] [--limit <lines>] [--tail <lines>]"
+# Create a cli tool to capture logs from different pods
+
+# - select pod with fzf and since and until time
+# - capture logs from pod
+# - if the logs exists in cache, read from cache
+# - if the logs not exists in cache, base on last timestamp to get the new logs
+# - output the logs into smaller files, in each minutes, e.g. /namespace/pod-name/timestamp.log
+# - compose the logs from selected pods, filter with since,until time
+
+print_usage() {
+  echo "Usage: kubectl-tail [flags]"
+  echo ""
+  echo "Flags:"
+  echo "  -n, --namespace string   If present, the namespace scope for this CLI"
+  echo "  -s, --since string       If present, the start time to capture logs"
+  echo "  -h, --help               help for kubectl-tail"
 }
 
-if [ -z "$1" ]; then
-  print_help
+debug() {
+  echo "DEBUG: $1"
+}
+
+offset() {
+  input=$1
+  if [[ "$input" == *d ]]; then
+    input=$(date -u -d "${input%d} day ago" +"%Y-%m-%dT%H:%M:%SZ")
+  elif [[ "$input" == *h ]]; then
+    input=$(date -u -d "${input%h} hour ago" +"%Y-%m-%dT%H:%M:%SZ")
+  elif [[ "$input" == *m ]]; then
+    input=$(date -u -d "${input%m} minute ago" +"%Y-%m-%dT%H:%M:%SZ")
+  fi
+  echo "$input"
+}
+
+# parse flags
+while [[ $# -gt 0 ]]; do
+  key="$1"
+  case $key in
+  -n | --namespace)
+    NAMESPACE="$2"
+    shift
+    shift
+    ;;
+  -s | --since)
+    SINCE="$2"
+    shift
+    shift
+    ;;
+  -u | --until)
+    UNTIL="$2"
+    shift
+    shift
+    ;;
+  -h | --help)
+    print_usage
+    exit 0
+    ;;
+  *)
+    echo "Unknown flag: $1"
+    print_usage
+    exit 1
+    ;;
+  esac
+done
+
+if [ -z "$SINCE" ]; then
+  echo "Missing --since flag"
+  print_usage
   exit 1
 fi
 
-label=""
-since=""
-since_time=""
-limit=-1
-tail=100
+if [ -z "$UNTIL" ]; then
+  UNTIL=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+fi
 
-# parse input
-while [ -n "$1" ]; do
-  case "$1" in
-  -l)
-    label=$2
-    shift
-    ;;
-  --since)
-    since=$2
-    shift
-    ;;
-  --since-time)
-    since_time=$2
-    shift
-    ;;
-  --limit)
-    limit=$2
-    shift
-    ;;
-  --tail)
-    tail=$2
-    shift
-    ;;
-  *)
-    print_help
-    exit 0
-    ;;
-  esac
-  shift
-done
+SINCE=$(offset "$SINCE")
+UNTIL=$(offset "$UNTIL")
 
 args=()
-if [ -n "$since" ]; then
-  args+=("--since $since")
-fi
-if [ -n "$since_time" ]; then
-  args+=("--since-time $since_time")
-fi
-if [ $limit -gt 0 ]; then
-  args+=("--limit-bytes $limit")
-  # reset tail if limit is set
-  tail=0
-fi
-if [ $tail -gt 0 ]; then
-  args+=("--tail $tail")
+if [ -n "$NAMESPACE" ]; then
+  args+=("-n $NAMESPACE")
 fi
 
-# filter pods with fzf
-if [ -z "$label" ]; then
-  pods=$(kubectl get pods -o name | fzf -m --header="select pods, args: ${args[*]}")
-else
-  pods=$(kubectl get pods -l $label -o name | fzf -m --header="select pods, args: ${args[*]}")
-fi
-
+# select pods with gum
+pods=$(kubectl get pods "${args[@]}" -o name)
 if [ -z "$pods" ]; then
-  echo "No pods selected"
-  exit 0
+  echo "No pods found"
+  exit 1
 fi
 
-# get logs
-current_time=$(date +%s)
-filename="logs_$current_time.log"
-args+=(
-  --timestamps
-  --ignore-errors
-)
+selected=$(echo "$pods" | gum choose --no-limit)
+if [ -z "$selected" ]; then
+  echo "No pods selected"
+  exit 1
+fi
 
-# fetch logs
-echo "" >>$filename
-for pod in $pods; do
-  echo "kubectl logs $pod ${args[@]} >>$filename"
-  kubectl logs $pod ${args[@]} >>$filename
+IFS=$'\n' read -r -d '' -a pods <<< "$selected"
+
+context=$(kubectl config current-context)
+
+# dump logs into cache
+for pod in "${pods[@]}"; do
+  start=$SINCE
+  end=$UNTIL
+  pod_name=$(echo "$pod" | cut -d/ -f2)
+  echo "Downloading logs from $pod_name, since $start"
+
+  log_folder="$HOME/.kube/cache/$context/$pod_name"
+  mkdir -p $log_folder
+  debug "log_folder=$log_folder"
+
+  latest_log_file=$(ls -t $log_folder | head -n 1)
+  if [ -z "$latest_log_file" ]; then
+    echo "No logs found in cache"
+  else
+    latest_timestamp=$(echo "$latest_log_file" | cut -d. -f1)
+    # if latest log file is newer than start time, update start time
+    if [[ "$latest_timestamp" > "$start" ]]; then
+      echo "Found logs in cache, latest is $latest_timestamp"
+      start=$latest_timestamp
+      # reset latest log file, will be overwritten
+      rm "$log_folder/$latest_log_file"
+    fi
+  fi
+
+  # if since time is newer than until time, skip
+  if [[ "$start" > "$end" ]]; then
+    echo "Logs already up to date, no need to download"
+    continue
+  fi
+
+  debug "start=$start, end=$end"
+
+  # get logs from pod
+  debug "capture new logs from remote $pod_name, since $start"
+  logs=$(kubectl logs "${args[@]}" "$pod" --since-time="$start" --timestamps --ignore-errors)
+
+  # split logs base on timestamp, 1 minute 1 file
+  while read -r line; do
+    # mask timestamp to minute
+    timestamp=$(echo "$line" | cut -d' ' -f1 | cut -c1-16)
+    new_log_file="$log_folder/${timestamp}:00Z.log"
+    mkdir -p "$(dirname "$new_log_file")"
+
+    # write to log file
+    echo "$line" >>"$new_log_file"
+  done <<<"$logs"
 done
 
-# sort logs
-sort -n $filename -o $filename
+# compose logs
+compose_log_file=$(date -u +"%Y-%m-%dT%H:%M:%SZ").compose.log
+for pod in "${pods[@]}"; do
+  start=$SINCE
+  end=$UNTIL
+  pod_name=$(echo "$pod" | cut -d/ -f2)
+  debug "pod_name=$pod_name"
+
+  log_folder="$HOME/.kube/cache/$context/$pod_name"
+  for log_file in $(ls -t $log_folder); do
+    timestamp=$(echo "$log_file" | cut -d. -f1)
+    if [[ "$timestamp" > "$start" && "$timestamp" < "$end" ]]; then
+      cat "$log_folder/$log_file" >>"$compose_log_file"
+    fi
+  done
+done
+
+sort "$compose_log_file" -o "$compose_log_file"
+echo "Composed logs ready in $compose_log_file"
