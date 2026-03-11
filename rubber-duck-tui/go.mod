@@ -3,8 +3,8 @@ module github.com/Anddd7/rubber-duck/rubber-duck-tui
 go 1.22.2
 
 require (
-	github.com/charmbracelet/bubbletea v0.27.1
-	github.com/charmbracelet/lipgloss v0.13.1
+	github.com/charmbracelet/bubbletea/v2 v2.0.2
+	github.com/charmbracelet/lipgloss/v2 v2.0.2
 	github.com/jedib0t/go-pretty/v6 v6.7.8
 )
 
