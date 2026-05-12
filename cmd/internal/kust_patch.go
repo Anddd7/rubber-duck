@@ -14,6 +14,11 @@ func newKustPatchCmd() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "kust-patch",
 		Short: "Manage patch components",
+		Long:  "Manage patches under kustomize/_patches/<patch> and apply/rollback them to workloads.",
+		Example: "  rubber-duck kust-patch list\n" +
+			"  rubber-duck kust-patch get curl\n" +
+			"  rubber-duck kust-patch install curl --pod <pod-name> -n default\n" +
+			"  rubber-duck kust-patch uninstall curl --deploy httpbin -n default",
 	}
 
 	cmd.AddCommand(newKustPatchListCmd())
@@ -28,6 +33,8 @@ func newKustPatchListCmd() *cobra.Command {
 	return &cobra.Command{
 		Use:   "list",
 		Short: "List patch components",
+		Long:  "List reusable patch components.",
+		Example: "  rubber-duck kust-patch list",
 		RunE: func(cmd *cobra.Command, args []string) error {
 			components, err := discoverComponentsByType(componentTypePatch)
 			if err != nil {
@@ -52,6 +59,8 @@ func newKustPatchGetCmd() *cobra.Command {
 	return &cobra.Command{
 		Use:   "get <patch>",
 		Short: "Get patch details",
+		Long:  "Show patch metadata, path, and description.",
+		Example: "  rubber-duck kust-patch get curl",
 		Args:  cobra.ExactArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			component, err := findComponentByType(args[0], componentTypePatch)
@@ -72,6 +81,8 @@ func newKustPatchInstallCmd() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "install <patch>",
 		Short: "Apply patch to workload owner of a pod",
+		Long:  "Resolve deployment owner from the target pod, then patch the deployment template.",
+		Example: "  rubber-duck kust-patch install curl --pod httpbin-xxxx -n default",
 		Args:  cobra.ExactArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			if pod == "" {
@@ -121,6 +132,9 @@ func newKustPatchUninstallCmd() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "uninstall <patch>",
 		Short: "Rollback workload to previous revision",
+		Long:  "Rollback deployment to previous revision using kubectl rollout undo.",
+		Example: "  rubber-duck kust-patch uninstall curl --deploy httpbin -n default\n" +
+			"  rubber-duck kust-patch uninstall curl --pod httpbin-xxxx -n default",
 		Args:  cobra.ExactArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			if _, err := findComponentByType(args[0], componentTypePatch); err != nil {

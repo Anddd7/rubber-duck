@@ -37,6 +37,11 @@ func newKustCmd() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "kust",
 		Short: "Manage standard kustomize components",
+		Long:  "Manage components under kustomize/<component>/kustomization/{base,overlays/...}.",
+		Example: "  rubber-duck kust list\n" +
+			"  rubber-duck kust get httpbin\n" +
+			"  rubber-duck kust install httpbin --overlay base -n default\n" +
+			"  rubber-duck kust uninstall httpbin --overlay base -n default",
 	}
 
 	cmd.AddCommand(newKustListCmd())
@@ -51,6 +56,8 @@ func newKustListCmd() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "list",
 		Short: "List standard components",
+		Long:  "List installable standard kustomize components.",
+		Example: "  rubber-duck kust list",
 		RunE: func(cmd *cobra.Command, args []string) error {
 			components, err := discoverComponentsByType(componentTypeNormal)
 			if err != nil {
@@ -85,6 +92,8 @@ func newKustGetCmd() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "get <component>",
 		Short: "Get standard component details",
+		Long:  "Show component metadata, path, description, base, and overlays.",
+		Example: "  rubber-duck kust get httpbin",
 		Args:  cobra.ExactArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			component, err := findComponentByType(args[0], componentTypeNormal)
@@ -108,6 +117,9 @@ func newKustInstallCmd() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "install <component>",
 		Short: "Install a standard component",
+		Long:  "Install a standard component from base or overlay via kubectl apply -k.",
+		Example: "  rubber-duck kust install httpbin --overlay base -n default\n" +
+			"  rubber-duck kust install nginx --overlay ingress --dry-run",
 		Args:  cobra.ExactArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			if overlay == "" {
@@ -151,6 +163,9 @@ func newKustUninstallCmd() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "uninstall <component>",
 		Short: "Uninstall a standard component",
+		Long:  "Uninstall a standard component from base or overlay via kubectl delete -k.",
+		Example: "  rubber-duck kust uninstall httpbin --overlay base -n default\n" +
+			"  rubber-duck kust uninstall nginx --overlay ingress --dry-run",
 		Args:  cobra.ExactArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			if overlay == "" {

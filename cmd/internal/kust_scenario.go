@@ -12,6 +12,11 @@ func newKustScenarioCmd() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "kust-scenario",
 		Short: "Manage scenario components",
+		Long:  "Manage scenarios under kustomize/_scenarios/<scenario>.",
+		Example: "  rubber-duck kust-scenario list\n" +
+			"  rubber-duck kust-scenario get oauth-github\n" +
+			"  rubber-duck kust-scenario install oauth-github -n default\n" +
+			"  rubber-duck kust-scenario uninstall oauth-github -n default",
 	}
 
 	cmd.AddCommand(newKustScenarioListCmd())
@@ -26,6 +31,8 @@ func newKustScenarioListCmd() *cobra.Command {
 	return &cobra.Command{
 		Use:   "list",
 		Short: "List scenario components",
+		Long:  "List reusable scenario compositions.",
+		Example: "  rubber-duck kust-scenario list",
 		RunE: func(cmd *cobra.Command, args []string) error {
 			components, err := discoverComponentsByType(componentTypeScenario)
 			if err != nil {
@@ -50,6 +57,8 @@ func newKustScenarioGetCmd() *cobra.Command {
 	return &cobra.Command{
 		Use:   "get <scenario>",
 		Short: "Get scenario details",
+		Long:  "Show scenario metadata, path, and description.",
+		Example: "  rubber-duck kust-scenario get oauth-github",
 		Args:  cobra.ExactArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			component, err := findComponentByType(args[0], componentTypeScenario)
@@ -70,6 +79,9 @@ func newKustScenarioInstallCmd() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "install <scenario>",
 		Short: "Install a scenario",
+		Long:  "Install scenario manifests with kubectl apply -k.",
+		Example: "  rubber-duck kust-scenario install oauth-github -n default\n" +
+			"  rubber-duck kust-scenario install grpc-timeout --dry-run",
 		Args:  cobra.ExactArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			component, err := findComponentByType(args[0], componentTypeScenario)
@@ -103,6 +115,9 @@ func newKustScenarioUninstallCmd() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "uninstall <scenario>",
 		Short: "Uninstall a scenario",
+		Long:  "Uninstall scenario manifests with kubectl delete -k.",
+		Example: "  rubber-duck kust-scenario uninstall oauth-github -n default\n" +
+			"  rubber-duck kust-scenario uninstall grpc-timeout --dry-run",
 		Args:  cobra.ExactArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			component, err := findComponentByType(args[0], componentTypeScenario)
