@@ -30,18 +30,19 @@ Direct build check:
 go build ./cmd/rubber-duck
 ```
 
-Install via `go install` (recommended for development):
+Install via `go install` (recommended):
+
+```bash
+# Install directly from the repository (recommended for typical use)
+go install github.com/Anddd7/rubber-duck/cmd/rubber-duck@latest
+# this installs the binary into $GOBIN (or $GOPATH/bin)
+```
+
+For local development from a working copy you can still install the local package path:
 
 ```bash
 # from the repository root
 go install ./cmd/rubber-duck
-# this will install the binary into $GOBIN or $GOPATH/bin
-```
-
-If you prefer to install a specific version from the repository remote once a tag is published:
-
-```bash
-go install github.com/Anddd7/rubber-duck/cmd/rubber-duck@latest
 ```
 
 ## CLI quick usage
