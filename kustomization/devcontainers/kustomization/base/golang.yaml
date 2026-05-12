@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: golang
-        image: mcr.microsoft.com/devcontainers/go:1.21
+        image: mcr.microsoft.com/devcontainers/go:1.26
         command: ["/bin/sh", "-c", "while sleep 1000; do :; done"]
         resources:
           # at least you can work with golang extension

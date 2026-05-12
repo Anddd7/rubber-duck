@@ -38,7 +38,7 @@ spec:
             secretKeyRef:
               name: oauth2-proxy-credentials
               key: OAUTH2_PROXY_COOKIE_SECRET
-        image: quay.io/oauth2-proxy/oauth2-proxy:v7.5.1
+        image: quay.io/oauth2-proxy/oauth2-proxy:latest
         name: oauth2-proxy
         ports:
         - containerPort: 4180

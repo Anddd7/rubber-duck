@@ -11,7 +11,7 @@ patches:
       path: "/spec/template/spec/containers/-"
       value:
         name: sidecar-curl
-        image: curlimages/curl:8.5.0
+        image: curlimages/curl:latest
         args:
         - sleep
         - "3600"
