@@ -12,6 +12,8 @@ var CLI struct {
 	Cidr         CidrCmds         `cmd:""`
 	Sidecar      SidecarCmds      `cmd:""`
 	Devcontainer DevcontainerCmds `cmd:""`
+	App          AppCmds          `cmd:""`
+	Debug        DebugCmds        `cmd:""`
 }
 
 type GlobalSettings struct {
