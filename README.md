@@ -30,6 +30,20 @@ Direct build check:
 go build ./cmd/rubber-duck
 ```
 
+Install via `go install` (recommended for development):
+
+```bash
+# from the repository root
+go install ./cmd/rubber-duck
+# this will install the binary into $GOBIN or $GOPATH/bin
+```
+
+If you prefer to install a specific version from the repository remote once a tag is published:
+
+```bash
+go install github.com/Anddd7/rubber-duck/cmd/rubber-duck@latest
+```
+
 ## CLI quick usage
 
 ```bash
@@ -109,3 +123,10 @@ go run ./cmd/rubber-duck kust uninstall httpbin --overlay base -n default
 - `kust-patch install` requires `--pod` and patches the owning deployment.
 - `kust-patch uninstall` performs `rollout undo` (rollback), not restart.
 - Asset descriptions in CLI are read from each asset `README.md` first non-header line.
+
+CI
+
+This repository includes GitHub Actions workflows to validate changes automatically:
+
+- .github/workflows/go.yml — runs `go vet`, `go test`, and `golangci-lint` on push/PR
+- .github/workflows/kustomize.yml — builds each `kustomization` to validate templates
