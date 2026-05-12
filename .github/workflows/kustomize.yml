@@ -1,0 +1,35 @@
+name: Kustomize Validate
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  validate:
+    name: Validate kustomize overlays
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install kustomize
+        run: |
+          KUSTOMIZE_VERSION=v5.0.1
+          curl -sSfL https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2F${KUSTOMIZE_VERSION}/kustomize_${KUSTOMIZE_VERSION}_linux_amd64.tar.gz | tar -xz -C /tmp
+          sudo mv /tmp/kustomize /usr/local/bin/
+
+      - name: Find kustomization.yaml files
+        run: |
+          echo "Searching for kustomization.yaml files..."
+          rg -n --hidden "kustomization.yaml$" || true
+
+      - name: Validate each kustomization
+        run: |
+          set -euo pipefail
+          while IFS= read -r file; do
+            dir=$(dirname "$file")
+            echo "Validating $dir"
+            kustomize build "$dir" >/dev/null
+          done < <(rg -n --hidden "kustomization.yaml$" -g '!vendor' -g '!.git' --no-line-number --files)
