@@ -9,4 +9,3 @@ commonAnnotations:
 # - read time is 40s, timeout is 35s
 # - read time is 30s, grpc timeout is 35s, proxy timeout is 40s
 # - read time is 30s, grpc timeout is 40s, proxy timeout is 35s
-

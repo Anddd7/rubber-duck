@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This component patches `apps/v1` Deployments by appending a `netshoot` sidecar container.
+Add a `netshoot` sidecar for fast network diagnostics inside app pods.
 
 ## Use cases
 

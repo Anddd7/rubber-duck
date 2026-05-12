@@ -6,3 +6,4 @@ dryrun.yaml
 dryrun-*.yaml
 
 bin/*
+rubber-duck

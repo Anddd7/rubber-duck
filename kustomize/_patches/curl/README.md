@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This component patches `apps/v1` Deployments by appending a `curl` sidecar container.
+Add a `curl` sidecar for quick in-pod HTTP/API connectivity checks.
 
 ## Use cases
 
