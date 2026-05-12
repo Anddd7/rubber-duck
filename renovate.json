@@ -1,0 +1,45 @@
+{
+  "extends": [
+    "config:base"
+  ],
+
+  "timezone": "UTC",
+
+  "schedule": [
+    "before 5am on monday"
+  ],
+
+  "packageRules": [
+    {
+      "matchManagers": ["gomod"],
+      "groupName": "all go modules",
+      "automerge": false,
+      "schedule": ["before 5am on monday"]
+    },
+    {
+      "matchDatasources": ["docker"],
+      "matchPackagePatterns": ["*/*", "^library/.*$"],
+      "groupName": "docker image updates",
+      "automerge": false,
+      "schedule": ["before 5am on monday"]
+    },
+    {
+      "matchUpdateTypes": ["patch"],
+      "automerge": true,
+      "automergeType": "pr",
+      "groupName": "patch updates (automerge)"
+    }
+  ],
+
+  "regexManagers": [
+    {
+      "fileMatch": ["(^|/)Dockerfile$", "(^|/)docker-compose\\.ya?ml$", "(^|/)kustomize/.*\\/kustomization\\.yaml$"],
+      "matchStrings": [
+        "(?m)\\bFROM\\s+(?<depName>[A-Za-z0-9_.\/-]+):(?<currentValue>[A-Za-z0-9_.\\-]+)"
+      ],
+      "datasourceTemplate": "docker",
+      "depNameTemplate": "{{{depName}}}",
+      "versioningTemplate": "docker"
+    }
+  ]
+}
