@@ -1,0 +1,8 @@
+namespace: rubber-duck
+commonAnnotations:
+  rubber-duck/component: netshoot
+  rubber-duck/managed-by: kustomization
+  rubber-duck/overlays: pod
+
+resources:
+- pod.yaml
