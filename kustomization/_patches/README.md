@@ -6,5 +6,5 @@ A bunch of common patches (as component), e.g. sidecars, annotations
 
 ```yaml
 components:
-- ../../kustomization-patches/<component>
+- ../../_patches/<component>
 ```
