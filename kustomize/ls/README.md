@@ -1,7 +1,24 @@
 # ls
 
-Use ls to exlore the file system in pod, e.g. verify the mounted volume
+## Introduction
 
-## Usage
+Run a minimal pod for filesystem checks inside the cluster.
 
-Use a simple Pod ~~deployment~~ to check the stateful things.
+## Use cases
+
+- Verify mounted volumes and file permissions
+- Inspect runtime filesystem state quickly
+
+## How to use
+
+- Base pod:
+
+  ```sh
+  kustomize build kustomize/ls/kustomization/base
+  ```
+
+- PVC overlay:
+
+  ```sh
+  kustomize build kustomize/ls/kustomization/overlays/pvc
+  ```

@@ -1,21 +1,42 @@
 # Dev Container in Kubernetes
 
-Install a dev container inside your cluster, develop and test your application in a real environment.
+## Introduction
 
-## Description
+Install a dev container inside your cluster to develop and test in a real Kubernetes environment.
+
+## Use cases
+
+- Remote development with cluster network/storage context
+- Standardized per-language dev workspace in Kubernetes
+
+## How to use
+
+- Base:
+
+  ```sh
+  kustomize build kustomize/devcontainers/kustomization/base
+  ```
+
+- Golang overlay:
+
+  ```sh
+  kustomize build kustomize/devcontainers/kustomization/overlays/golang
+  ```
+
+Attach with VSCode after deployment.
+
+## Notes
 
 Devcontainers is a remote development environment, you can use vscode to connect to a remote server, and use the server's resources to develop your code. When you run it in a kubernetes cluster, you can use the cluster's resources(compute, network, storage) and develop a true 'cloud-native' application.
 
 VSCode (client) will interact with the dev container(pod) in the cluster, via kubectl and kube-proxy. So you don't need to open any port for the deployment.
 
-## Usage
+Install required VSCode extensions:
 
-- install required extensions for vscode
-  - Dev Container
-  - Kubernetes
-- deploy a dev container
-- set kubeconfig
-- select the pod and `Attach Visual Studio Code``
+- Dev Container
+- Kubernetes
+
+Then set kubeconfig, select the pod and `Attach Visual Studio Code`.
 
 ![Alt text](docs/attach-pod.png)
 

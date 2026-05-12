@@ -1,7 +1,24 @@
 # httpbin
 
-Use httpbin(<https://httpbin.org/>) to test the connection to your pod.
+## Introduction
 
-## Usage
+Deploy [httpbin](https://httpbin.org/) for HTTP connectivity and behavior testing.
 
-just expose the service by port-forward or ingress.
+## Use cases
+
+- Verify service/network routing in cluster
+- Reproduce client/server request behavior quickly
+
+## How to use
+
+- Base only:
+
+  ```sh
+  kustomize build kustomize/httpbin/kustomization/base
+  ```
+
+- With ingress overlay:
+
+  ```sh
+  kustomize build kustomize/httpbin/kustomization/overlays/ingress
+  ```

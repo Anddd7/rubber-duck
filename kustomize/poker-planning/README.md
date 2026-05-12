@@ -1,8 +1,29 @@
 # poker-planning
 
-Deploy poker-planning (<https://github.com/ModPhoenix/poker-planning>) to your cluster as communication tool.
+## Introduction
 
-## Description
+Deploy [poker-planning](https://github.com/ModPhoenix/poker-planning) to Kubernetes for planning sessions.
+
+## Use cases
+
+- Lightweight team estimation sessions in cluster
+- Internal workshop/demo environment
+
+## How to use
+
+- Base:
+
+  ```sh
+  kustomize build kustomize/poker-planning/kustomization/base
+  ```
+
+- Ingress overlay:
+
+  ```sh
+  kustomize build kustomize/poker-planning/kustomization/overlays/ingress
+  ```
+
+## Notes
 
 It doesn't provide docker image directly, so I build it from source code.
 

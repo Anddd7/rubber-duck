@@ -1,10 +1,10 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: your-app-oauth
+  name: demo-app-oauth
 spec:
   rules:
-  - host: <host>
+  - host: app.example.com
     http:
       paths:
       - backend:
@@ -16,5 +16,5 @@ spec:
         pathType: Prefix
   tls:
   - hosts:
-    - <tls-host>
-    secretName: <tls-cert>
+    - app.example.com
+    secretName: demo-example-tls

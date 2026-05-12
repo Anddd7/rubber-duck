@@ -1,8 +1,31 @@
 # excalidraw collabration
 
-Deploy excalidraw(<https://github.com/excalidraw/excalidraw>) to your cluster as communication tool.
+## Introduction
 
-## Description
+Deploy [Excalidraw](https://github.com/excalidraw/excalidraw) with collaboration services in Kubernetes.
+
+## Use cases
+
+- Team whiteboarding in private cluster environments
+- Internal collaboration demos with custom ingress/domain
+
+## How to use
+
+- Base:
+
+  ```sh
+  kustomize build kustomize/excalidraw/kustomization/base
+  ```
+
+- Ingress overlay:
+
+  ```sh
+  kustomize build kustomize/excalidraw/kustomization/overlays/ingress
+  ```
+
+For custom domain/tls/url values, patch overlay configmap/ingresses from scenario or env overlay.
+
+## Notes
 
 The realtime collaboration feature is comming from community:
 
@@ -18,8 +41,6 @@ Solution:
 ### TODO: move to forked excalidraw, replace with self build image
 
 to keep the source same, should build the image from code
-
-## Usage
 
 Overwrite the configurations and compose it with kustomize
 

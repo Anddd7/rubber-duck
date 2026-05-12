@@ -4,20 +4,20 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/auth-signin: https://$host/oauth2/start?rd=$escaped_request_uri
     nginx.ingress.kubernetes.io/auth-url: https://$host/oauth2/auth
-  name: your-app
+  name: demo-app
 spec:
   rules:
-  - host: <host>
+  - host: app.example.com
     http:
       paths:
       - backend:
           service:
-            name: your-app
+            name: demo-app
             port:
               number: 8080
         path: /
         pathType: Prefix
   tls:
   - hosts:
-    - <tls-host>
-    secretName: <tls-cert>
+    - app.example.com
+    secretName: demo-example-tls
