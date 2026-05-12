@@ -31,7 +31,11 @@ jobs:
 
       - name: Install golangci-lint
         run: |
-          curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $GITHUB_PATH v1.59.0
+          # $GITHUB_PATH is a file used by GitHub Actions to update the PATH.
+          # Don't pass it as a directory to the installer (that causes "File exists").
+          curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b "${HOME}/bin" v1.59.0
+          # Add the install dir to PATH for subsequent steps
+          echo "${HOME}/bin" >> "$GITHUB_PATH"
 
       - name: Run go vet
         run: go vet ./...
