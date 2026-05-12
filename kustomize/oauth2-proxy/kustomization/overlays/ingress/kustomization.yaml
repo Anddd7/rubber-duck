@@ -1,0 +1,10 @@
+namespace: rubber-duck
+commonAnnotations:
+  rubber-duck/component: oauth2-proxy
+  rubber-duck/managed-by: kustomization
+  rubber-duck/overlays: ingress
+
+resources:
+- ../../base
+- ingress.yaml
+- ingress-oauth.yaml
